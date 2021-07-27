@@ -1,6 +1,26 @@
-# Project 3
+# Project 3 - Afflatus Music
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+## Idea - Afflatus Music Blog for Music Lovers
+* Connection to Spotify API
+* Sharing music you love with other users (kind of like reddit?)
+* Create posts, edit, delete posts
+* Create, edit, delete comments
+
+## To Do 
+* Wireframe
+* Initial Pitch
+
+## Description
+Afflatus Music is a web application that allows users to create playlists and share them as posts amongst other users. Users can comment on posts and recommend songs to be added to the playlist. This application functions as a mini-Spotify-clone, and links with Spotify’s developer API. 
+
+## Implementation Steps
+* Home Page
+* Connection to Spotify API (Backend)
+* Create User
+* Create Posts that has link to Spotify Music
+
 
 ## Available Scripts
 

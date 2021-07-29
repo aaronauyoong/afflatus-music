@@ -22,15 +22,17 @@ Afflatus Music is a web application that allows users to create playlists and sh
 * Create Posts that has link to Spotify Music
 
 ## Packages used
-Spotify-Web-API-Node
-Express
-Bootstrap
-React Bootstrap
-Apollo
-Axios
-Dotenv
-GraphQL
-React Router
+* Spotify-Web-API-Node (New)
+* React-Spotify-Web-Playback (New)
+* Express
+* Bootstrap
+* React Bootstrap
+* Apollo
+* Axios
+* Dotenv
+* GraphQL
+* React Router
+* Cors
 
 ## Available Scripts
 

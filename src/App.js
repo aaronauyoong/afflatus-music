@@ -9,31 +9,12 @@ import React from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "./Login"
+import Dashboard from "./Dashboard";
+
+const code = new URLSearchParams(window.location.search).get("code")
 
 function App() {
-	return (
-		<div className="afflatus-music-app">
-			<Login />
-		</div>
-	);
+	return code ? <Dashboard code ={code} /> : <Login />
 }
 
 export default App;
-
-// function App() {
-// 	return (
-// 		<div className="afflatus-music-app">
-// 			<Nav />
-// 			<main>
-// 				<Router>
-// 					<Switch>
-// 						<Route exact path="/" component={Home} />
-// 						<Route exact path="/login" component={Login} />
-// 						<Route exact path="/profile" component={Profile} />
-// 					</Switch>
-// 				</Router>
-// 			</main>
-// 			<Footer />
-// 		</div>
-// 	);
-// }

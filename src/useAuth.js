@@ -27,13 +27,13 @@ export default function useAuth(code) {
 	// whenever refresh token changes/expires, run the below useEffect()
 	useEffect(() => {
 		// prevent auto refresh as script below causes refresh token to be ran before acquiring one, returning as undefined and causing errors.
+		if (!refreshToken || !expiresIn) return;
 		const interval = setInterval(() => {
-			if (!refreshToken || !expiresIn) return;
 			axios
 				.post("http://localhost:3001/refresh", {
 					refreshToken,
 				})
-				.then((res) => {
+				.then(res => {
 					console.log(res.data);
 					setAccessToken(res.data.accessToken);
 					setExpiresIn(res.data.expiresIn);

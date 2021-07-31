@@ -3,7 +3,7 @@ import useAuth from "./useAuth";
 import { Container, Form } from "react-bootstrap";
 import SpotifyWebApi from "spotify-web-api-node";
 import TrackSearchResult from "./TrackSearchResult";
-import Player from "./Player"
+import Player from "./Player";
 
 const spotifyApi = new SpotifyWebApi({
 	clientId: "2ae77a009ef04f15b6de9046ff925ebb",
@@ -16,8 +16,8 @@ export default function Dashboard({ code }) {
     const [playingTrack, setPlayingTrack] = useState()
 
     function chooseTrack(track) {
-        setPlayingTrack(track)
-        setSearch("")
+        setPlayingTrack(track);
+        setSearch("");
     }
 
 	useEffect(() => {

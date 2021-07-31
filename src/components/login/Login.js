@@ -1,5 +1,6 @@
 import React from "react";
 import { Container } from "react-bootstrap";
+import "../../assets/styles/customStyles.css";
 import MusicCartoon from "../../assets/images/undrawMusicCartoon.svg";
 const AUTH_URL =
 	"https://accounts.spotify.com/authorize?client_id=2ae77a009ef04f15b6de9046ff925ebb&response_type=code&redirect_uri=http://localhost:3000&scope=streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state";
@@ -9,11 +10,15 @@ const AUTH_URL =
 
 export default function Login() {
 	return (
-		<div>
-			<img src={MusicCartoon} alt="This is a cartoon of a bird listening to music."/>
+		<div className="login-page">
+			<div className="login-image">
+				<img
+					src={MusicCartoon}
+					alt="This is a cartoon of a bird listening to music."
+				/>
+			</div>
 			<Container
-				className="d-flex justify-content-center align-items-center"
-				style={{ minHeight: "100vh" }}
+				className="login-button"
 			>
 				<a className="btn btn-success btn-lg" href={AUTH_URL}>
 					{" "}

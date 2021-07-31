@@ -1,8 +1,40 @@
 :root {
-    /* Colour Scheme generated from https://coolors.co/000505-3b3355-5d5d81-bfcde0-fefcfd */
-    --white: #FEFCFD;
-    --lightsteelblue: #BFCDE0;
-    --darkbluegray: #5D5D81;
-    --englishviolet: #3B3355;
-    --richblackFOGRA39: #000505;
+	/* V1 Colour Scheme generated from https://coolors.co/000505-3b3355-5d5d81-bfcde0-fefcfd */
+	--white: #fefcfd;
+	--lightsteelblue: #bfcde0;
+	--darkbluegray: #5d5d81;
+	--englishviolet: #3b3355;
+	--richblackFOGRA39: #000505;
+
+	/* V2 Colour Scheme generated from https://coolors.co/22223b-4a4e69-9a8c98-c9ada7-f2e9e4  */
+	--isabelline: #f2e9e4;
+	--silverpink: #c9ada7;
+	--heliotropegrey: #9a8c98;
+	--independence: #4a4e69;
+	--spacecadet: #22223b;
+}
+
+/* body {
+    background-color: var(--independence);
+} */
+
+.login-page {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.login-image {
+    margin: 30px;
+}
+
+.login-image img {
+    height: 500px;
+}
+
+.login-button {
+    /* min-height: 100vh; */
+    text-align: center;
 }

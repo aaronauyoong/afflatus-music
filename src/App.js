@@ -8,8 +8,8 @@ import React from "react";
 
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Login from "./Login";
-import Dashboard from "./Dashboard";
+import Login from "./components/login/Login";
+import Dashboard from "./components/dashboard/Dashboard";
 
 // getting URL param called 'code'
 const code = new URLSearchParams(window.location.search).get("code");

@@ -1,6 +1,6 @@
 import React from "react";
 // import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-// import Nav from "./components/nav/Nav";
+import Nav from "./components/nav/Nav";
 // import Home from "./components/homepage/Home";
 // import Login from "./components/login/Login";
 // import Profile from "./components/footer/Profile";
@@ -15,7 +15,17 @@ import Dashboard from "./components/dashboard/Dashboard";
 const code = new URLSearchParams(window.location.search).get("code");
 
 function App() {
-	return code ? <Dashboard code={code} /> : <Login />;
+	return code ? (
+		<div>
+			<Nav />
+			<Dashboard code={code}></Dashboard>
+		</div>
+	) : (
+		<div>
+			<Nav />
+			<Login />
+		</div>
+	);
 }
 
 export default App;

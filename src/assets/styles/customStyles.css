@@ -18,6 +18,7 @@
     background-color: var(--independence);
 } */
 
+/* LOGIN PAGE SECTION */
 .login-page {
     display: flex;
     flex-wrap: wrap;
@@ -37,4 +38,13 @@
 .login-button {
     /* min-height: 100vh; */
     text-align: center;
+}
+
+/* NAVBAR SECTION */
+.nav-bar {
+    padding: 20px;
+}
+
+.afflatus-title {
+    font-size: larger;
 }

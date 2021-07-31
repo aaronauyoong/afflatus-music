@@ -1,3 +1,5 @@
+// Might no longer need this as Playlist data will be extracted from Spotify API. 
+
 const { Schema, model } = require("mongoose");
 
 const playlistSchema = new Schema({

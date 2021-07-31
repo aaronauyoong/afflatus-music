@@ -1,3 +1,5 @@
+// Might no longer need this as will try to link blog posts to Spotify account
+
 const { Schema, model } = require("mongoose");
 
 const userSchema = new Schema({

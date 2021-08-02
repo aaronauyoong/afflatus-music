@@ -20,39 +20,42 @@
 
 /* LOGIN PAGE SECTION */
 .login-page {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
 }
 
 .login-image {
-    margin: 30px;
+	margin: 30px;
 }
 
 .login-image img {
-    height: 450px;
+	height: 450px;
 }
 
 .login-button {
-    /* min-height: 100vh; */
-    text-align: center;
+	/* min-height: 100vh; */
+	text-align: center;
 }
 
 /* NAVBAR SECTION */
 .nav-bar {
-    padding: 20px;
+	padding: 20px;
+	margin-bottom: 20px;
+	background-color: #333;
+	color: #fff;
 }
 
 .afflatus-title {
-    font-size: larger;
+	margin: 0px;
+	font-size: larger;
 }
 
 /* MUSIC PLAYER SECTION */
 .music-player {
-	margin-top: 30px;
-	justify-content: 'space-between';
+	position: sticky;
+	bottom: 0px;
 }
 
 /* FOOTER SECTION */

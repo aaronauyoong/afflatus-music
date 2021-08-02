@@ -75,6 +75,18 @@ export default function Dashboard({ code }) {
 					))}
 				</div>
 			</Container>
+			<div className="post-overview" style={{ flexGrow: 1 }}>
+				<p>This is where posts will be.</p>
+				<p>This is where posts will be.</p>
+				<p>This is where posts will be.</p>
+				<p>This is where posts will be.</p>
+				<p>This is where posts will be.</p>
+				<p>This is where posts will be.</p>
+				<p>This is where posts will be.</p>
+				<p>This is where posts will be.</p>
+				<p>This is where posts will be.</p>
+				<p>This is where posts will be.</p>
+			</div>
 			<div className="music-player">
 				<Player accessToken={accessToken} trackUri={playingTrack?.uri} />
 			</div>

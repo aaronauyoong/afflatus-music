@@ -26,8 +26,8 @@ export default function useAuth(code) {
 			})
 			.catch(() => {
 				// Note: change to history.push("/") once react router is set up with redirect to login
-				// history.push("/");
-				window.location = "/";
+				history.push("/");
+				// window.location = "/";
 			});
 	}, [code]);
 
@@ -49,8 +49,8 @@ export default function useAuth(code) {
 				})
 				.catch((err) => {
 					// Note: change to history.push("/") once react router is set up with redirect to login
-					window.location = "/";
-					// history.push("/");
+					// window.location = "/";
+					history.push("/");
 				});
 			// 1 minute before expires, will update refreshToken
 		}, (expiresIn - 60) * 1000);

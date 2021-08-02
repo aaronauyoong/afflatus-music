@@ -48,3 +48,13 @@
 .afflatus-title {
     font-size: larger;
 }
+
+/* MUSIC PLAYER SECTION */
+.music-player {
+	margin-top: 30px;
+}
+
+/* FOOTER SECTION */
+.footer {
+	margin: 30px;
+}

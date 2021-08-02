@@ -3,6 +3,7 @@ const SpotifyWebAPI = require("spotify-web-api-node");
 
 // Login
 router.post("/login", (req, res) => {
+	console.log("This is a test")
 	const code = req.body.code;
 	const spotifyApi = new SpotifyWebAPI({
 		redirectUri: process.env.REDIRECT_URI,

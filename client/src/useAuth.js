@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import {useLocation, useHistory} from 'react-router-dom'
 import axios from "axios";
 
 export default function useAuth(code) {
@@ -6,13 +7,18 @@ export default function useAuth(code) {
 	const [refreshToken, setRefreshToken] = useState();
 	const [expiresIn, setExpiresIn] = useState();
 
+	// const location  = useLocation();
+	// const history = useHistory();
+	
+
 	useEffect(() => {
 		axios
-			.post("http://localhost:3001/login", {
+			.post("/login", {
 				code,
 			})
 			.then((res) => {
 				console.log(res.data);
+				// throw new Error('testtt')
 				setAccessToken(res.data.accessToken);
 				setRefreshToken(res.data.refreshToken);
 				setExpiresIn(res.data.expiresIn);
@@ -20,6 +26,7 @@ export default function useAuth(code) {
 				window.history.pushState({}, null, "/");
 			})
 			.catch(() => {
+				//history.push('/')
 				window.location = "/";
 			});
 	}, [code]);
@@ -30,7 +37,7 @@ export default function useAuth(code) {
 		if (!refreshToken || !expiresIn) return;
 		const interval = setInterval(() => {
 			axios
-				.post("http://localhost:3001/refresh", {
+				.post("/refresh", {
 					refreshToken,
 				})
 				.then(res => {
@@ -40,7 +47,8 @@ export default function useAuth(code) {
 					// below removes extra code section from URL that we dont want (includes clientID, scopes for Spotify etc)
 					window.history.pushState({}, null, "/");
 				})
-				.catch(() => {
+				.catch((err) => {
+					console.log(err)
 					window.location = "/";
 				});
                 // 1 minute before expires, will update refreshToken

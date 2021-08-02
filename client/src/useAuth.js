@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import {useLocation, useHistory} from 'react-router-dom'
+import { useLocation, useHistory } from "react-router-dom";
 import axios from "axios";
 
 export default function useAuth(code) {
@@ -8,8 +8,7 @@ export default function useAuth(code) {
 	const [expiresIn, setExpiresIn] = useState();
 
 	// const location  = useLocation();
-	// const history = useHistory();
-	
+	const history = useHistory();
 
 	useEffect(() => {
 		axios
@@ -26,7 +25,8 @@ export default function useAuth(code) {
 				window.history.pushState({}, null, "/");
 			})
 			.catch(() => {
-				//history.push('/')
+				// Note: change to history.push("/") once react router is set up with redirect to login
+				// history.push("/");
 				window.location = "/";
 			});
 	}, [code]);
@@ -40,7 +40,7 @@ export default function useAuth(code) {
 				.post("/refresh", {
 					refreshToken,
 				})
-				.then(res => {
+				.then((res) => {
 					console.log(res.data);
 					setAccessToken(res.data.accessToken);
 					setExpiresIn(res.data.expiresIn);
@@ -48,15 +48,15 @@ export default function useAuth(code) {
 					window.history.pushState({}, null, "/");
 				})
 				.catch((err) => {
-					console.log(err)
+					// Note: change to history.push("/") once react router is set up with redirect to login
 					window.location = "/";
+					// history.push("/");
 				});
-                // 1 minute before expires, will update refreshToken
+			// 1 minute before expires, will update refreshToken
 		}, (expiresIn - 60) * 1000);
 
-        return () => clearInterval(interval);
+		return () => clearInterval(interval);
 	}, [refreshToken, expiresIn]);
-
 
 	return accessToken;
 }

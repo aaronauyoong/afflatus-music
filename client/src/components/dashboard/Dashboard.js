@@ -4,6 +4,8 @@ import { Container, Form } from "react-bootstrap";
 import SpotifyWebApi from "spotify-web-api-node";
 import TrackSearchResult from "../searchresults/TrackSearchResult";
 import Player from "../musicplayer/Player";
+import "../../assets/styles/customStyles.css";
+// import { urlCode } from "../../utils/urlCode.js";
 
 const spotifyApi = new SpotifyWebApi({
 	clientId: "2ae77a009ef04f15b6de9046ff925ebb",
@@ -13,12 +15,12 @@ export default function Dashboard({ code }) {
 	const accessToken = useAuth(code);
 	const [search, setSearch] = useState("");
 	const [searchResults, setSearchResults] = useState([]);
-    const [playingTrack, setPlayingTrack] = useState()
+	const [playingTrack, setPlayingTrack] = useState();
 
-    function chooseTrack(track) {
-        setPlayingTrack(track);
-        setSearch("");
-    }
+	function chooseTrack(track) {
+		setPlayingTrack(track);
+		setSearch("");
+	}
 
 	useEffect(() => {
 		if (!accessToken) return;
@@ -28,9 +30,9 @@ export default function Dashboard({ code }) {
 	useEffect(() => {
 		if (!search) return setSearchResults([]);
 		if (!accessToken) return;
-        
-        // everytime we change access token, we want to cancel request
-        let cancel = false;
+
+		// everytime we change access token, we want to cancel request
+		let cancel = false;
 		spotifyApi.searchTracks(search).then((res) => {
 			if (cancel) return;
 			setSearchResults(
@@ -51,11 +53,11 @@ export default function Dashboard({ code }) {
 				})
 			);
 		});
-        return () => cancel = true;
+		return () => (cancel = true);
 	}, [search, accessToken]);
 
 	return (
-		<Container className="d0flex flex-column py-2">
+		<Container className="d-flex flex-column py-2">
 			<Form.Control
 				type="search"
 				placeholder="Search Songs/Artists"
@@ -63,13 +65,17 @@ export default function Dashboard({ code }) {
 				onChange={(e) => setSearch(e.target.value)}
 			/>
 			<div className="flex-grow-1 my-2" style={{ overflowY: "auto" }}>
-				{searchResults.map(track => (
-                    <TrackSearchResult track={track} key={track.uri} chooseTrack={chooseTrack} />
-                ))}
+				{searchResults.map((track) => (
+					<TrackSearchResult
+						track={track}
+						key={track.uri}
+						chooseTrack={chooseTrack}
+					/>
+				))}
 			</div>
-            <div>
-                <Player accessToken={accessToken} trackUri={playingTrack?.uri} />
-            </div>
+			<div className="music-player">
+				<Player accessToken={accessToken} trackUri={playingTrack?.uri} />
+			</div>
 		</Container>
 	);
 }

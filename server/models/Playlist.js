@@ -1,4 +1,6 @@
 // Might no longer need this as Playlist data will be extracted from Spotify API. 
+// Update - will still be storing some data extracted from Spotify's API on MongoDB
+// 3 Aug 2021 - Removed Playlist Description (playlistDesc) and createdAt
 
 const { Schema, model } = require("mongoose");
 
@@ -9,14 +11,6 @@ const playlistSchema = new Schema({
 	},
 	playlistName: {
 		type: String,
-		required: true,
-	},
-    playlistDesc: {
-		type: String,
-		required: true,
-	},
-	createdAt: {
-		type: Date,
 		required: true,
 	},
 	user: [
@@ -33,6 +27,6 @@ const playlistSchema = new Schema({
 	],
 });
 
-const Playlist = model("Post", playlistSchema);
+const Playlist = model("Playlist", playlistSchema);
 
 module.exports = Playlist;

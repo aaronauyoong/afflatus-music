@@ -1,16 +1,24 @@
 const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
-	type Class {
-		_id: ID
-		name: String
-		building: String
-		creditHours: Int
+	type Post {
+		id: ID
+		postTitle: String
+        postContent: String
+		createdAt: String
+		user: [User]
 	}
 
-	type Query {
-		classes: [Class]
+	type User {
+	    id: ID
+        username: String
+        displayName: String
 	}
+
+    type Playlist {
+        id: ID
+        playlistName: String
+    }
 `;
 
 module.exports = typeDefs;

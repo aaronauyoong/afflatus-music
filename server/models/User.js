@@ -1,4 +1,5 @@
 // Might no longer need this as will try to link blog posts to Spotify account
+// Updated model as per Spotify's API
 
 const { Schema, model } = require("mongoose");
 
@@ -15,18 +16,10 @@ const userSchema = new Schema({
 		type: String,
 		required: true,
 	},
-	firstName: {
+	displayName: {
 		type: String,
 		required: true,
-	},
-	lastName: {
-		type: String,
-		required: true,
-	},
-	password: {
-		type: String,
-		required: true,
-	},
+	}
 });
 
 const User = model("User", userSchema);

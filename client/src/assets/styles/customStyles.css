@@ -12,6 +12,9 @@
 	--heliotropegrey: #9a8c98;
 	--independence: #4a4e69;
 	--spacecadet: #22223b;
+
+	/* Extra colours */
+	--gentlegrey: #e5e5e5;
 }
 
 /* body {
@@ -66,8 +69,8 @@
 	justify-content: center;
 	text-align: center;
 	align-items: center;
-	padding: 30px;
-	margin: 30px;
+	padding: 30px 30px 0px;
+	margin: 30px 30px 0px;
 }
 
 /* DASHBOARD MENU SECTION */
@@ -89,11 +92,26 @@
 	align-items: center;
 	padding: 30px;
 	margin: 30px;
-	border: 5px solid var(-spacecadet);
+	border: 5px solid var(--spacecadet);
 	border-radius: 5px;
-	color: var(--isabelline);
-	background-color: var(--spacecadet);
+	color: var(--richblackFOGRA39);
+	background-color: var(--gentlegrey);
+	flex: 1;
+	overflow: hidden;
 }
+
+.my-playlists:hover, .explore-playlists:hover{
+	background-color: var(--lightsteelblue);
+	transition: 0.5s;
+	cursor: pointer;
+}
+
+.my-playlists img, .explore-playlists img {
+	max-height: 400px;
+	max-width: 400px;
+	padding-bottom: 15px;
+}
+
 
 /* MUSIC PLAYER SECTION */
 .music-player {

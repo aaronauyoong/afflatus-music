@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from "react";
-import MyPlaylist from "../../components/playlist/SpotifyGetPlaylist";
+import MyPlaylists from "../../components/playlist/SpotifyGetPlaylist";
+import ExplorePlaylists from "../../components/playlist/ExplorePlaylists";
 import useAuth from "../../utils/useAuth";
 import { Container, Form } from "react-bootstrap";
 import SpotifyWebApi from "spotify-web-api-node";
@@ -7,6 +8,10 @@ import TrackSearchResult from "../searchResults/TrackSearchResult";
 import Player from "../musicPlayer/Player";
 import "../../assets/styles/customStyles.css";
 // import { urlCode } from "../../utils/urlCode.js";
+
+// Image Imports
+import GroupMusicCartoon from "../../assets/images/undrawComposeMusicGroup.svg";
+import SoloMusicCartoon from "../../assets/images/undrawMusicImagination.svg";
 
 const spotifyApi = new SpotifyWebApi({
 	clientId: "2ae77a009ef04f15b6de9046ff925ebb",
@@ -85,11 +90,19 @@ export default function Dashboard({ code }) {
 					style={{ flexGrow: 1 }}
 				>
 					<div className="my-playlists">
-						<MyPlaylist accessToken={accessToken} />
+						<img
+							src={SoloMusicCartoon}
+							alt="Illustration of someone listening to music"
+						/>
+						<MyPlaylists accessToken={accessToken} />
 						<p>View your collection of Spotify playlists.</p>
 					</div>
 					<div className="explore-playlists">
-						<button>Explore Playlists</button>
+						<img
+							src={GroupMusicCartoon}
+							alt="Illustration of a group of people and music notes "
+						/>
+						<ExplorePlaylists accessToken={accessToken} />
 						<p>Browse playlists specially curated by others.</p>
 					</div>
 				</div>

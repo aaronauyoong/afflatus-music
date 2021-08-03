@@ -1,4 +1,5 @@
 import { React, useState, useEffect } from "react";
+import Playlist from "../../components/playlist/SpotifyGetPlaylist";
 import useAuth from "../../utils/useAuth";
 import { Container, Form } from "react-bootstrap";
 import SpotifyWebApi from "spotify-web-api-node";
@@ -76,6 +77,7 @@ export default function Dashboard({ code }) {
 				</div>
 			</Container>
 			<div className="post-overview" style={{ flexGrow: 1 }}>
+				<Playlist accessToken={accessToken} />
 				<p>This is where posts will be.</p>
 				<p>This is where posts will be.</p>
 				<p>This is where posts will be.</p>

@@ -10,7 +10,7 @@ function Nav() {
 		<div>
 			<header>
 				<nav className="nav-bar">
-					<p className="afflatus-title">Afflatus Music ©</p>
+					<a className="afflatus-title" href="/">Afflatus Music ©</a>
 				</nav>
 			</header>
 

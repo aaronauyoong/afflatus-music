@@ -1,5 +1,5 @@
 import { React, useState, useEffect } from "react";
-import Playlist from "../../components/playlist/SpotifyGetPlaylist";
+import MyPlaylist from "../../components/playlist/SpotifyGetPlaylist";
 import useAuth from "../../utils/useAuth";
 import { Container, Form } from "react-bootstrap";
 import SpotifyWebApi from "spotify-web-api-node";
@@ -76,8 +76,25 @@ export default function Dashboard({ code }) {
 					))}
 				</div>
 			</Container>
-			<div className="post-overview" style={{ flexGrow: 1 }}>
-				<Playlist accessToken={accessToken} />
+			<main className="dashboard-home">
+				<div className="welcome-user d-flex flex-column py-2">
+					<h1>Welcome, Spotify User.</h1>
+				</div>
+				<div
+					className="dashboard-menu d-flex flex-row align-items-center py-2"
+					style={{ flexGrow: 1 }}
+				>
+					<div className="my-playlists">
+						<MyPlaylist accessToken={accessToken} />
+						<p>View your collection of Spotify playlists.</p>
+					</div>
+					<div className="explore-playlists">
+						<button>Explore Playlists</button>
+						<p>Browse playlists specially curated by others.</p>
+					</div>
+				</div>
+				<div className="post-overview" style={{ flexGrow: 1 }}>
+					{/* <p>This is where posts will be.</p>
 				<p>This is where posts will be.</p>
 				<p>This is where posts will be.</p>
 				<p>This is where posts will be.</p>
@@ -86,9 +103,10 @@ export default function Dashboard({ code }) {
 				<p>This is where posts will be.</p>
 				<p>This is where posts will be.</p>
 				<p>This is where posts will be.</p>
-				<p>This is where posts will be.</p>
-				<p>This is where posts will be.</p>
-			</div>
+				<p>This is where posts will be.</p> */}
+				</div>
+			</main>
+
 			<div className="music-player">
 				<Player accessToken={accessToken} trackUri={playingTrack?.uri} />
 			</div>

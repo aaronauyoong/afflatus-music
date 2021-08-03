@@ -47,9 +47,52 @@
 	color: #fff;
 }
 
+.nav-bar a {
+	text-decoration: none;
+	color: #fff;
+}
+
+.nav-bar a:hover {
+	color: #fff;
+}
+
 .afflatus-title {
 	margin: 0px;
 	font-size: larger;
+}
+
+/* WELCOME USER SECTION */
+.welcome-user {
+	justify-content: center;
+	text-align: center;
+	align-items: center;
+	padding: 30px;
+	margin: 30px;
+}
+
+/* DASHBOARD MENU SECTION */
+.dashboard-home {
+	min-height: 100vh;
+	min-width: 100vw;
+}
+
+.dashboard-menu {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: row;
+	padding: 30px;
+}
+
+.my-playlists, .explore-playlists{
+	text-align: center;
+	align-items: center;
+	padding: 30px;
+	margin: 30px;
+	border: 5px solid var(-spacecadet);
+	border-radius: 5px;
+	color: var(--isabelline);
+	background-color: var(--spacecadet);
 }
 
 /* MUSIC PLAYER SECTION */

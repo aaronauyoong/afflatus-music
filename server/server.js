@@ -1,5 +1,4 @@
 const express = require("express");
-const mongoose = require("mongoose");
 const cors = require("cors");
 const routes = require("./routes");
 require("dotenv").config();
@@ -31,10 +30,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(routes);
 
 // Start the API server
-// app.listen(PORT, () =>
-// 	console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`)
-// );
-
 db.once("open", () => {
 	app.listen(PORT, () => {
 		console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);

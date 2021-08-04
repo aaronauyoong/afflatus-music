@@ -6,12 +6,9 @@ import { Container, Form } from "react-bootstrap";
 import SpotifyWebApi from "spotify-web-api-node";
 import TrackSearchResult from "../searchResults/TrackSearchResult";
 import Player from "../musicPlayer/Player";
+import GetMyPlaylists from "../../getMe";
 import "../../assets/styles/customStyles.css";
 // import { urlCode } from "../../utils/urlCode.js";
-
-// Image Imports
-import GroupMusicCartoon from "../../assets/images/undrawComposeMusicGroup.svg";
-import SoloMusicCartoon from "../../assets/images/undrawMusicImagination.svg";
 
 const spotifyApi = new SpotifyWebApi({
 	clientId: "2ae77a009ef04f15b6de9046ff925ebb",
@@ -62,6 +59,70 @@ export default function Dashboard({ code }) {
 		return () => (cancel = true);
 	}, [search, accessToken]);
 
+	function getMyData() {
+		(async () => {
+			const me = await spotifyApi.getMe();
+			console.log(me.body);
+			console.log(me.body.display_name)
+			getUserPlaylists(me.body.id);
+		})().catch(err => {
+			console.error(err)
+		})
+	}
+
+	// get my playlists
+    async function getUserPlaylists(userName) {
+        const data = await spotifyApi.getUserPlaylists(userName);
+
+        console.log("----------+++++++++");
+        // let playlists = [];
+
+        for(let playlist of data.body.items) {
+            console.log(playlist.name + " " + playlist.id)
+
+            let tracks = await getPlaylistTracks(playlist.id, playlist.name);
+            console.log(tracks)
+        }
+    }
+
+    // get playlist tracks 
+    async function getPlaylistTracks(playlistId, playlistName) {
+        const data = await spotifyApi.getPlaylistTracks(playlistId, {
+            offset: 1,
+            limit: 10, 
+            fields: 'items'
+    
+        })
+
+        // console.log("The playlist contains these tracks %j", data.body);
+        // console.log("The playlist contains these tracks: ", data.body.items[0].track)
+        console.log("'" + playlistName + "'" + " contains these tracks:");
+
+        let tracks = [];
+
+        for (let track_obj of data.body.items) {
+            const track = track_obj.track
+            tracks.push(track);
+            console.log(track.name + " : " + track.artists[0].name)
+          }
+
+        console.log("----------+++++++++++")
+        return tracks
+    }
+
+	function getDisplayName() {
+		(async () => {
+			const user = await spotifyApi.getMe();
+			const userDisplayName = user.body.display_name;
+			const username = `<h1>Welcome, ${userDisplayName}.</h1>`;
+			document.getElementById("welcome-user").innerHTML = username;
+		})().catch(err => {
+			console.error(err)
+		})
+	}
+
+	getDisplayName();
+	
 	return (
 		<div>
 			<Container className="d-flex flex-column py-2">
@@ -83,7 +144,7 @@ export default function Dashboard({ code }) {
 			</Container>
 			<main className="dashboard-home">
 				<div className="welcome-user d-flex flex-column py-2">
-					<h1>Welcome, Spotify User.</h1>
+					<h1 id="welcome-user"><placeholder>Welcome.</placeholder></h1>
 				</div>
 				<div
 					className="dashboard-menu d-flex flex-row align-items-center py-2"
@@ -96,20 +157,13 @@ export default function Dashboard({ code }) {
 						<ExplorePlaylists accessToken={accessToken} />
 					</div>
 				</div>
-				<div className="post-overview" style={{ flexGrow: 1 }}>
-					{/* <p>This is where posts will be.</p>
-				<p>This is where posts will be.</p>
-				<p>This is where posts will be.</p>
-				<p>This is where posts will be.</p>
-				<p>This is where posts will be.</p>
-				<p>This is where posts will be.</p>
-				<p>This is where posts will be.</p>
-				<p>This is where posts will be.</p>
-				<p>This is where posts will be.</p>
-				<p>This is where posts will be.</p> */}
+				<div>
+					<GetMyPlaylists />
 				</div>
+				<button onClick={getMyData}>
+					Get my data
+				</button>
 			</main>
-
 			<div className="music-player">
 				<Player accessToken={accessToken} trackUri={playingTrack?.uri} />
 			</div>

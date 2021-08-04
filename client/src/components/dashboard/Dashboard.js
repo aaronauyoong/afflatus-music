@@ -90,20 +90,10 @@ export default function Dashboard({ code }) {
 					style={{ flexGrow: 1 }}
 				>
 					<div className="my-playlists">
-						<img
-							src={SoloMusicCartoon}
-							alt="Illustration of someone listening to music"
-						/>
 						<MyPlaylists accessToken={accessToken} />
-						<p>View your collection of Spotify playlists.</p>
 					</div>
 					<div className="explore-playlists">
-						<img
-							src={GroupMusicCartoon}
-							alt="Illustration of a group of people and music notes "
-						/>
 						<ExplorePlaylists accessToken={accessToken} />
-						<p>Browse playlists specially curated by others.</p>
 					</div>
 				</div>
 				<div className="post-overview" style={{ flexGrow: 1 }}>

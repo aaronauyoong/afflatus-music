@@ -33,7 +33,7 @@ export default function Dashboard({ code }) {
 		if (!search) return setSearchResults([]);
 		if (!accessToken) return;
 
-		// everytime we change access token, we want to cancel request
+		// Cancelling request for each change/update of access token.
 		let cancel = false;
 		spotifyApi.searchTracks(search).then((res) => {
 			if (cancel) return;
@@ -158,14 +158,14 @@ export default function Dashboard({ code }) {
 					</div>
 				</div>
 				<div>
-					<GetMyPlaylists  code={code}/>
+					<GetMyPlaylists accessToken={accessToken} code={code} />
 				</div>
 				<button onClick={getMyData}>
 					Get my data
 				</button>
 			</main>
 			<div className="music-player">
-				<Player accessToken={accessToken} trackUri={playingTrack?.uri} />
+				<Player accessToken={accessToken} code={code} trackUri={playingTrack?.uri} />
 			</div>
 		</div>
 	);

@@ -1,8 +1,6 @@
 import { React, useEffect } from "react";
 import useAuth from "./utils/useAuth";
 import SpotifyWebApi from "spotify-web-api-node";
-// import "../../assets/styles/customStyles.css";
-// import { urlCode } from "../../utils/urlCode.js";
 
 const spotifyApi = new SpotifyWebApi({
 	clientId: "2ae77a009ef04f15b6de9046ff925ebb",
@@ -35,7 +33,7 @@ export default function GetMyPlaylists({ code }) {
 	}
 
     // get my playlists
-    async function getUserPlaylists(userName) {
+    async function getUserPlaylists(accessToken) {
         // console.log("this is my username", userName);
         console.log("ACCESS TOKEN", accessToken);
         const me = await spotifyApi.getMe();

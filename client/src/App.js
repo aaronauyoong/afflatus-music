@@ -16,6 +16,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Login from "./components/login/Login";
 import Dashboard from "./components/dashboard/Dashboard";
+import UserPlaylists from "./components/playlist/GetUserPlaylists";
 
 const client = new ApolloClient({
 	uri: "https://localhost:3000",
@@ -26,28 +27,36 @@ const client = new ApolloClient({
 
 // getting URL param called 'code'
 const code = new URLSearchParams(window.location.search).get("code");
-console.log(code);
+const authCode = window.localStorage.setItem('code', code);
+// const authCode = localStorage.getItem("code");
+// console.log(authCode)
 
 function App() {
 	return (
 		<ApolloProvider client={client}>
-			<div className="afflatus-music">
-				<StoreProvider>
+			<StoreProvider>
+				<div className="afflatus-music">
 					<Nav />
 					<main>
 						<Router>
 							<Switch>
-								<Route exact path="/">
-									{code ? <Dashboard code={code} /> : <Login />}
+								<Route exact path="/" code={code}>
+									{code ? <Dashboard authCode={code} /> : <Login />}
 								</Route>
-								{/* <Route exact path="/myplaylists">
-							{code ? <MyPlaylists code={code}/> : <Login /> }
-						</Route> */}
+								{/* <Route exact path="/">
+									{code ? <Dashboard code={code} /> : <Login />}
+								</Route> */}
+								{/* <Route exact path="/myplaylists" component={UserPlaylists}code={code}>
+									{code ? <UserPlaylists authCode={code} /> : <Login />}
+								</Route> */}
+								<Route exact path="/myplaylists" component={UserPlaylists}code={code}>
+									{/* {code ? <UserPlaylists code={authCode} /> : <Login />} */}
+								</Route>
 							</Switch>
 						</Router>
 					</main>
-				</StoreProvider>
-			</div>
+				</div>
+			</StoreProvider>
 		</ApolloProvider>
 	);
 }

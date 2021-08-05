@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 export default function useAuth(code) {
+	console.log("this is the code --->", code);
 	const [accessToken, setAccessToken] = useState();
 	const [refreshToken, setRefreshToken] = useState();
 	const [expiresIn, setExpiresIn] = useState();
@@ -17,19 +18,20 @@ export default function useAuth(code) {
 			})
 			.then((res) => {
 				// console.log(res.data);
-				// throw new Error('testtt')
 				setAccessToken(res.data.accessToken);
+				console.log("CONSOLE LOG FOR access token", res.data.accessToken);
 				setRefreshToken(res.data.refreshToken);
 				setExpiresIn(res.data.expiresIn);
 				// below removes extra code section from URL that we dont want (includes clientID, scopes for Spotify etc)
 				window.history.pushState({}, null, "/");
+				window.localStorage.setItem("code", accessToken);
 			})
 			.catch(() => {
 				// Note: change to history.push("/") once react router is set up with redirect to login
 				history.push("/");
 				// window.location = "/";
 			});
-	}, [code, history]);
+	}, [code, history, accessToken]);
 
 	// whenever refresh token changes/expires, run the below useEffect()
 	useEffect(() => {
@@ -46,6 +48,8 @@ export default function useAuth(code) {
 					setExpiresIn(res.data.expiresIn);
 					// below removes extra code section from URL that we dont want (includes clientID, scopes for Spotify etc)
 					window.history.pushState({}, null, "/");
+					window.localStorage.removeItem("code");
+					window.localStorage.setItem("code", accessToken)
 				})
 				.catch((err) => {
 					// Note: change to history.push("/") once react router is set up with redirect to login
@@ -56,7 +60,7 @@ export default function useAuth(code) {
 		}, (expiresIn - 60) * 1000);
 
 		return () => clearInterval(interval);
-	}, [refreshToken, expiresIn, history]);
+	}, [refreshToken, expiresIn, history, accessToken]);
 
 	return accessToken;
 }

@@ -16,7 +16,7 @@ export default function useAuth(code) {
 				code,
 			})
 			.then((res) => {
-				console.log(res.data);
+				// console.log(res.data);
 				// throw new Error('testtt')
 				setAccessToken(res.data.accessToken);
 				setRefreshToken(res.data.refreshToken);
@@ -29,7 +29,7 @@ export default function useAuth(code) {
 				history.push("/");
 				// window.location = "/";
 			});
-	}, [code]);
+	}, [code, history]);
 
 	// whenever refresh token changes/expires, run the below useEffect()
 	useEffect(() => {
@@ -41,7 +41,7 @@ export default function useAuth(code) {
 					refreshToken,
 				})
 				.then((res) => {
-					console.log(res.data);
+					// console.log(res.data);
 					setAccessToken(res.data.accessToken);
 					setExpiresIn(res.data.expiresIn);
 					// below removes extra code section from URL that we dont want (includes clientID, scopes for Spotify etc)
@@ -56,7 +56,7 @@ export default function useAuth(code) {
 		}, (expiresIn - 60) * 1000);
 
 		return () => clearInterval(interval);
-	}, [refreshToken, expiresIn]);
+	}, [refreshToken, expiresIn, history]);
 
 	return accessToken;
 }

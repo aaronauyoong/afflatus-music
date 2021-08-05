@@ -26,7 +26,9 @@ function App() {
 						<Route exact path="/">
 							{code ? <Dashboard code={code}/> : <Login />}
 						</Route>
-						{/* <Route exact path="/profile" component={Profile} /> */}
+						{/* <Route exact path="/myplaylists">
+							{code ? <MyPlaylists code={code}/> : <Login /> }
+						</Route> */}
 					</Switch>
 				</Router>
 			</main>

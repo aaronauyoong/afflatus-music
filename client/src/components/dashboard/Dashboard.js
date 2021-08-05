@@ -158,7 +158,7 @@ export default function Dashboard({ code }) {
 					</div>
 				</div>
 				<div>
-					<GetMyPlaylists  />
+					<GetMyPlaylists  code={code}/>
 				</div>
 				<button onClick={getMyData}>
 					Get my data

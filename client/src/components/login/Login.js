@@ -6,8 +6,6 @@ import MusicCartoon from "../../assets/images/undrawMusicCartoon.svg";
 
 const CLIENT_ID = "2ae77a009ef04f15b6de9046ff925ebb";
 const REDIRECT_URI = "http://localhost:3000";
-// Note: may need to add more scopes for playlist functionality.
-// For now, only adding basic functionality.
 const scopes =
 	"streaming%20user-read-email%20user-read-private%20user-library-read%20user-library-modify%20user-read-playback-state%20user-modify-playback-state%20user-top-read%20playlist-modify-public";
 
@@ -25,8 +23,7 @@ export default function Login() {
 				</div>
 				<Container className="login-button">
 					<a className="btn btn-success btn-lg" href={AUTH_URL}>
-						{" "}
-						Login with Spotify{" "}
+						Login with Spotify
 					</a>
 				</Container>
 			</div>

@@ -1,7 +1,6 @@
 import { React, useEffect } from "react";
 import useAuth from "./utils/useAuth";
 import SpotifyWebApi from "spotify-web-api-node";
-// import GetMyData from "../../getMe"
 // import "../../assets/styles/customStyles.css";
 // import { urlCode } from "../../utils/urlCode.js";
 
@@ -9,21 +8,27 @@ const spotifyApi = new SpotifyWebApi({
 	clientId: "2ae77a009ef04f15b6de9046ff925ebb",
 });
 
-export default function getMyPlaylists({ code }) {
+export default function GetMyPlaylists({ code }) {
+    // console.log("Code", code);
 	// eslint-disable-next-line react-hooks/rules-of-hooks
 	const accessToken = useAuth(code);
 
     // eslint-disable-next-line react-hooks/rules-of-hooks
 	useEffect(() => {
+        // console.log("This is the access token", accessToken); 
 		if (!accessToken) return;
+        
 		spotifyApi.setAccessToken(accessToken);
 	}, [accessToken]);
 
     // get my data
+    // try to call this one to prevent too many fetch calls, store getMe() in a global state.
+    // then can try to extract display_name and username and populate in MongoDB for users to write posts.
 	function getMyData() {
 		(async () => {
 			const me = await spotifyApi.getMe();
-			getUserPlaylists(me.body.id);
+            // console.log("get user playlists")
+			await getUserPlaylists(me.body.id);
 		})().catch(err => {
 			console.error(err)
 		})
@@ -31,7 +36,10 @@ export default function getMyPlaylists({ code }) {
 
     // get my playlists
     async function getUserPlaylists(userName) {
-        const data = await spotifyApi.getUserPlaylists(userName);
+        // console.log("this is my username", userName);
+        console.log("ACCESS TOKEN", accessToken);
+        const me = await spotifyApi.getMe();
+        const data = await spotifyApi.getUserPlaylists(me.body.id);
 
         console.log("----------+++++++++");
         // let playlists = [];
@@ -55,7 +63,7 @@ export default function getMyPlaylists({ code }) {
 
         // console.log("The playlist contains these tracks %j", data.body);
         // console.log("The playlist contains these tracks: ", data.body.items[0].track)
-        console.log("'" + playlistName + "'" + " contains these tracks:");
+        console.log(playlistName + " contains these tracks:");
 
         let tracks = [];
 
@@ -69,7 +77,7 @@ export default function getMyPlaylists({ code }) {
         return tracks
     }
 
-    getMyData();
+    //getMyData();
 
 	
 	return (

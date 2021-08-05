@@ -6,9 +6,8 @@ import { Container, Form } from "react-bootstrap";
 import SpotifyWebApi from "spotify-web-api-node";
 import TrackSearchResult from "../searchResults/TrackSearchResult";
 import Player from "../musicPlayer/Player";
-import GetMyPlaylists from "../../getMe";
+import GetMyPlaylists from "../../getMyData";
 import "../../assets/styles/customStyles.css";
-// import { urlCode } from "../../utils/urlCode.js";
 
 const spotifyApi = new SpotifyWebApi({
 	clientId: "2ae77a009ef04f15b6de9046ff925ebb",
@@ -72,6 +71,7 @@ export default function Dashboard({ code }) {
 
 	// get my playlists
     async function getUserPlaylists(userName) {
+		// console.log("dashboard: ", accessToken);
         const data = await spotifyApi.getUserPlaylists(userName);
 
         console.log("----------+++++++++");
@@ -80,8 +80,8 @@ export default function Dashboard({ code }) {
         for(let playlist of data.body.items) {
             console.log(playlist.name + " " + playlist.id)
 
-            let tracks = await getPlaylistTracks(playlist.id, playlist.name);
-            console.log(tracks)
+            // let tracks = await getPlaylistTracks(playlist.id, playlist.name);
+            // console.log(tracks)
         }
     }
 
@@ -96,7 +96,7 @@ export default function Dashboard({ code }) {
 
         // console.log("The playlist contains these tracks %j", data.body);
         // console.log("The playlist contains these tracks: ", data.body.items[0].track)
-        console.log("'" + playlistName + "'" + " contains these tracks:");
+        console.log(playlistName + " contains these tracks:");
 
         let tracks = [];
 
@@ -158,7 +158,7 @@ export default function Dashboard({ code }) {
 					</div>
 				</div>
 				<div>
-					<GetMyPlaylists />
+					<GetMyPlaylists  />
 				</div>
 				<button onClick={getMyData}>
 					Get my data

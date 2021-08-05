@@ -13,10 +13,10 @@ const PLAYLIST_ENDPOINT = "https://api.spotify.com/v1/me/playlists";
 
 const ExplorePlaylists = ({ code }) => {
 	const accessToken = useAuth(code);
-	console.log(code);
+	// console.log(code);
 	const [token, setToken] = useState("");
 	const [data, setData] = useState({});
-	console.log(data);
+	// console.log(data);
 
 	useEffect(() => {
 		if (!accessToken) return;

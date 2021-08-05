@@ -31,26 +31,26 @@ const SpotifyGetPlaylists = ({ code }) => {
 
 
     // need to fix how we get playlists
-	const handleGetPlaylists = () => {
-		axios
-			.get(PLAYLIST_ENDPOINT, {
-				headers: {
-					Authorization: "Bearer " + token,
-				},
-			})
-			.then((response) => {
-				setData(response.data);
-			})
-			.catch((error) => {
-				console.log(error);
-			});
-	};
+	// const handleGetPlaylists = () => {
+	// 	axios
+	// 		.get(PLAYLIST_ENDPOINT, {
+	// 			headers: {
+	// 				Authorization: "Bearer " + token,
+	// 			},
+	// 		})
+	// 		.then((response) => {
+	// 			setData(response.data);
+	// 		})
+	// 		.catch((error) => {
+	// 			console.log(error);
+	// 		});
+	// };
 
 	return (
 		<div>
 			<a
 				href="/myplaylists"
-				onClick={handleGetPlaylists}
+				// onClick={handleGetPlaylists}
 				style={{ padding: "10px", margin: "10px" }}
 			>
 				<img src={SoloMusicCartoon} alt="Illustration of someone listening to music" />
@@ -62,3 +62,4 @@ const SpotifyGetPlaylists = ({ code }) => {
 };
 
 export default SpotifyGetPlaylists;
+

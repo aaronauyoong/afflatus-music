@@ -1,3 +1,4 @@
+import { useReducer } from 'react';
 // Import our actions from our actions file
 import { LOGGED_IN } from "./actions";
 
@@ -7,13 +8,13 @@ export default function reducer(state, action) {
 		case LOGGED_IN:
 			return {
 				...state,
-                user: [...state.user, action.payload]
+				user: [...state.user, action.payload],
 			};
 		default:
 			return state;
 	}
 }
 
-// export function useProductReducer(initialState) {
-//     return useReducer(reducer, initialState);
-//   }
+export function useLoginReducer(initialState) {
+	return useReducer(reducer, initialState);
+}

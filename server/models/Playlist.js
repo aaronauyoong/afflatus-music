@@ -5,10 +5,6 @@
 const { Schema, model } = require("mongoose");
 
 const playlistSchema = new Schema({
-	id: {
-		type: Number,
-		required: true,
-	},
 	playlistName: {
 		type: String,
 		required: true,

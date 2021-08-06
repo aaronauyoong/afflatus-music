@@ -1,10 +1,6 @@
 const { Schema, model } = require("mongoose");
 
 const commentSchema = new Schema({
-	id: {
-		type: Number,
-		required: true,
-	},
 	commentContent: {
 		type: String,
 		required: true,

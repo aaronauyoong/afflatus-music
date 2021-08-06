@@ -2,10 +2,20 @@
 // Updated model as per Spotify's API
 
 const { Schema, model } = require("mongoose");
-const bcrypt = require('bcrypt');
+const bcrypt = require("bcrypt");
+const Post = require('./Post');
+
 
 const userSchema = new Schema({
 	username: {
+		type: String,
+		required: true,
+	},
+	firstName: {
+		type: String,
+		required: true,
+	},
+	lastName: {
 		type: String,
 		required: true,
 	},
@@ -19,10 +29,8 @@ const userSchema = new Schema({
 		required: true,
 		minlength: 5,
 	},
-	displayName: {
-		type: String,
-		required: true,
-	},
+	posts: [Post.schema]
+
 });
 
 // set up pre-save middleware to create password

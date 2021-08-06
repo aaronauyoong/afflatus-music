@@ -3,12 +3,18 @@ const { User, Post } = require("../models");
 // Create the functions that fulfill the queries defined in `typeDefs.js`
 const resolvers = {
 	Query: {
-		getUsers: async () => {
+		users: async () => {
 			return await User.find({});
 		},
-		getPosts: async () => {
+        user: async (_, args) => {
+            return await User.findById(args.id);
+        },
+		posts: async () => {
 			return await Post.find({});
 		},
+        post: async (_, args) => {
+            return await Post.findById(args.id);
+        },
 	},
 	Mutation: {
 		addUser: async (_, args) => {
@@ -16,6 +22,10 @@ const resolvers = {
 			const token = signToken(user);
 			return { token, user };
 		},
+        addPost: async (_, { postTitle, postContent, createdAt }) => {
+            // Create and return the new School object
+            return await Post.create({ postTitle, postContent, createdAt });
+        },
 		updateUser: async (_, args, context) => {
 			if (context.user) {
 				return await User.findByIdAndUpdate(context.user._id, args, {

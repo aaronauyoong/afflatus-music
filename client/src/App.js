@@ -1,4 +1,4 @@
-import React from "react";
+import { React, useState, useEffect } from "react";
 import {
 	ApolloClient,
 	InMemoryCache,
@@ -8,13 +8,16 @@ import {
 } from "@apollo/client";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Nav from "./components/nav/Nav";
-// import Home from "./components/homepage/Home";
+import Home from "./pages/Home";
 // import Login from "./components/login/Login";
 // import Profile from "./components/footer/Profile";
 import { StoreProvider } from "./utils/GlobalState";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import Login from "./components/login/Login";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import SpotifyLogin from "./components/login/SpotifyLogin";
+import { getTokenFromUrl } from "./components/login/SpotifyLogin";
 import Dashboard from "./components/dashboard/Dashboard";
 import UserPlaylists from "./components/playlist/GetUserPlaylists";
 
@@ -27,11 +30,26 @@ const client = new ApolloClient({
 
 // getting URL param called 'code'
 const code = new URLSearchParams(window.location.search).get("code");
-const authCode = window.localStorage.setItem('code', code);
+const authCode = window.localStorage.setItem("code", code);
 // const authCode = localStorage.getItem("code");
 // console.log(authCode)
 
 function App() {
+
+	const [token, setToken] = useState();
+
+	useEffect(() => {
+		const hash = getTokenFromUrl();
+		window.location.hash = "";
+		const _token = hash.access_token;
+
+		if (_token) {
+			setToken(_token);
+		}
+
+		console.log("this is the token", token);
+	}, [token]);
+
 	return (
 		<ApolloProvider client={client}>
 			<StoreProvider>
@@ -40,16 +58,23 @@ function App() {
 					<main>
 						<Router>
 							<Switch>
-								<Route exact path="/" code={code}>
-									{code ? <Dashboard authCode={code} /> : <Login />}
+								<Route exact path="/" component={Home} />
+								<Route exact path="/login" component={Login} />
+								<Route exact path ="/signup" component={Signup} />
+								<Route exact path="/myplaylists" component={Dashboard} code={code}>
+									{code ? <Dashboard authCode={code} /> : <SpotifyLogin />}
 								</Route>
-								{/* <Route exact path="/">
-									{code ? <Dashboard code={code} /> : <Login />}
+								{/* <Route exact path="/exploreplaylists" component={ExplorePlaylists}>
 								</Route> */}
 								{/* <Route exact path="/myplaylists" component={UserPlaylists}code={code}>
 									{code ? <UserPlaylists authCode={code} /> : <Login />}
 								</Route> */}
-								<Route exact path="/myplaylists" component={UserPlaylists}code={code}>
+								<Route
+									exact
+									path="/myplaylists"
+									component={UserPlaylists}
+									code={code}
+								>
 									{/* {code ? <UserPlaylists code={authCode} /> : <Login />} */}
 								</Route>
 							</Switch>

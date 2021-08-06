@@ -18,7 +18,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import SpotifyLogin from "./components/login/SpotifyLogin";
 import { getTokenFromUrl } from "./components/login/SpotifyLogin";
-import Dashboard from "./components/dashboard/Dashboard";
+import SpotifyDashboard from "./components/dashboard/SpotifyDashboard";
 import UserPlaylists from "./components/playlist/GetUserPlaylists";
 
 const client = new ApolloClient({
@@ -30,9 +30,9 @@ const client = new ApolloClient({
 
 // getting URL param called 'code'
 const code = new URLSearchParams(window.location.search).get("code");
-const authCode = window.localStorage.setItem("code", code);
-// const authCode = localStorage.getItem("code");
-// console.log(authCode)
+// const authCode = window.localStorage.setItem("code", code);
+// const authCode = window.localStorage.getItem("code");
+
 
 function App() {
 
@@ -61,22 +61,22 @@ function App() {
 								<Route exact path="/" component={Home} />
 								<Route exact path="/login" component={Login} />
 								<Route exact path ="/signup" component={Signup} />
-								<Route exact path="/myplaylists" component={Dashboard} code={code}>
-									{code ? <Dashboard authCode={code} /> : <SpotifyLogin />}
+								<Route exact path="/myplaylists" component={SpotifyDashboard} code={code}>
+									{code ? <SpotifyDashboard authCode={code} /> : <SpotifyLogin />}
 								</Route>
 								{/* <Route exact path="/exploreplaylists" component={ExplorePlaylists}>
 								</Route> */}
 								{/* <Route exact path="/myplaylists" component={UserPlaylists}code={code}>
 									{code ? <UserPlaylists authCode={code} /> : <Login />}
 								</Route> */}
-								<Route
+								{/* <Route
 									exact
 									path="/myplaylists"
 									component={UserPlaylists}
 									code={code}
 								>
-									{/* {code ? <UserPlaylists code={authCode} /> : <Login />} */}
-								</Route>
+									{code ? <UserPlaylists code={authCode} /> : <Login />}
+								</Route> */}
 							</Switch>
 						</Router>
 					</main>

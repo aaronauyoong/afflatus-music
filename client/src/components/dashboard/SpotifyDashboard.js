@@ -1,6 +1,6 @@
 import { React, useState, useEffect } from "react";
-import MyPlaylists from "../../components/playlist/SpotifyGetPlaylist";
-import ExplorePlaylists from "../../components/playlist/ExplorePlaylists";
+import MyPlaylists from "../playlist/SpotifyGetPlaylist";
+// import ExplorePlaylists from "../../components/playlist/ExplorePlaylists";
 import useAuth from "../../utils/useAuth";
 import { Container, Form } from "react-bootstrap";
 import SpotifyWebApi from "spotify-web-api-node";
@@ -13,7 +13,7 @@ const spotifyApi = new SpotifyWebApi({
 	clientId: "2ae77a009ef04f15b6de9046ff925ebb",
 });
 
-export default function Dashboard({ code }) {
+export default function SpotifyDashboard({ code }) {
 	const accessToken = useAuth(code);
 	const [search, setSearch] = useState("");
 	const [searchResults, setSearchResults] = useState([]);
@@ -152,9 +152,6 @@ export default function Dashboard({ code }) {
 				>
 					<div className="my-playlists">
 						<MyPlaylists accessToken={accessToken} />
-					</div>
-					<div className="explore-playlists">
-						<ExplorePlaylists accessToken={accessToken} />
 					</div>
 				</div>
 				<div>

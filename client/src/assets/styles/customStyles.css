@@ -21,25 +21,36 @@
     background-color: var(--independence);
 } */
 
-/* LOGIN PAGE SECTION */
-.login-page {
+/* HOME, LOGIN & SIGNUP PAGE SECTION */
+.home-page, .login-page {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: center;
 }
 
-.login-image {
+.home-image, .login-image {
 	margin: 30px;
 }
 
-.login-image img {
+.home-image img, .login-image img {
 	height: 450px;
 }
 
-.login-button {
+.welcome-message {
+	text-align: center;
+}
+
+.home-buttons {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
 	/* min-height: 100vh; */
 	text-align: center;
+}
+
+.signup-btn, .login-btn {
+	margin: 10px;
 }
 
 /* NAVBAR SECTION */

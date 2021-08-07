@@ -1,13 +1,11 @@
 [
 	{
-        "username": "ronnieyoong",
 		"firstName": "Ronnie",
 		"lastName": "Yoong",
 		"email": "ronnie@test.com",
 		"password": "password123"
 	},
 	{
-		"username": "daniel.k.here",
 		"firstName": "Daniel",
 		"lastName": "Kang",
 		"email": "daniel@test.com",

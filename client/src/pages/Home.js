@@ -25,12 +25,6 @@ export default function Home() {
 						<ExplorePlaylists/>
 					</div>
 				</div>
-				<div className="home-image">
-					<img
-						src={MusicCartoon}
-						alt="This is a cartoon of a bird listening to music."
-					/>
-				</div>
 			</div>
 			<Footer />
 		</div>

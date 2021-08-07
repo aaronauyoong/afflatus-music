@@ -49,27 +49,26 @@ const code =
 window.localStorage.setItem("code", code);
 
 function App() {
-
 	return (
 		<ApolloProvider client={client}>
-			<div className="afflatus-music">
-				<StoreProvider>
-					<Nav />
-					<main>
-						<Router>
+			<Router>
+				<div className="afflatus-music">
+					<StoreProvider>
+						<Nav />
+						<main>
 							<Switch>
 								<Route exact path="/" component={Home} />
 								<Route exact path="/login" component={Login} />
 								<Route exact path="/signup" component={Signup} />
-                                <Route exact path="/dashboard" component={Dashboard} />
+								<Route exact path="/dashboard" component={Dashboard} />
 								<Route exact path="/myplaylists" component={MyPlaylists} />
-                                <Route exact path="/spotifylogin" component={SpotifyLogin} />
-									{/* {code ? <MyPlaylists code={code} /> : <Login />} */}
+								<Route exact path="/spotifylogin" component={SpotifyLogin} />
+								{/* {code ? <MyPlaylists code={code} /> : <Login />} */}
 							</Switch>
-						</Router>
-					</main>
-				</StoreProvider>
-			</div>
+						</main>
+					</StoreProvider>
+				</div>
+			</Router>
 		</ApolloProvider>
 	);
 }

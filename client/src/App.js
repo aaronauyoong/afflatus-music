@@ -23,6 +23,7 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import SpotifyLogin from "./components/login/SpotifyLogin";
 import Dashboard from "./components/dashboard/Dashboard";
+import SpotifyDashboard from "./components/dashboard/SpotifyDashboard"
 
 const httpLink = createHttpLink({
 	uri: "/graphql",
@@ -43,10 +44,14 @@ const client = new ApolloClient({
 	cache: new InMemoryCache(),
 });
 
-const code =
-	window.localStorage.getItem("code") ??
-	new URLSearchParams(window.location.search).get("code");
-window.localStorage.setItem("code", code);
+// const code =
+// 	window.localStorage.getItem("code") ??
+// 	new URLSearchParams(window.location.search).get("code");
+// window.localStorage.setItem("code", code);
+
+const code = new URLSearchParams(window.location.search).get("code");
+const spotifyCode = window.localStorage.setItem("code", code)
+console.log(spotifyCode)
 
 function App() {
 	return (
@@ -63,7 +68,7 @@ function App() {
 								<Route exact path="/dashboard" component={Dashboard} />
 								<Route exact path="/myplaylists" component={MyPlaylists} />
 								<Route exact path="/spotifylogin" component={SpotifyLogin} />
-								{/* {code ? <MyPlaylists code={code} /> : <Login />} */}
+								<Route exact path="/spotifydashboard" component={SpotifyDashboard} code={spotifyCode} />
 							</Switch>
 						</main>
 					</StoreProvider>

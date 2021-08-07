@@ -1,8 +1,5 @@
-// Post and Comment are needed
-const Post = require("./Post");
-const Comment = require("./Comment");
+const User = require('./User');
+const Post = require('./Post');
 
-// User and Playlist may no longer be required as they might be extracted directly from Spotify API
-const User = require("./User");
 
-module.exports = { Post, Comment, User };
+module.exports = { User, Post };

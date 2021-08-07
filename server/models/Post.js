@@ -1,32 +1,24 @@
-const { Schema, model } = require("mongoose");
+const mongoose = require('mongoose');
+
+const { Schema } = mongoose;
 
 const postSchema = new Schema({
-	postTitle: {
+  postTitle: {
 		type: String,
 		required: true,
 	},
-    postContent: {
+  postContent: {
 		type: String,
 		required: true,
 	},
-	createdAt: {
-		type: Date,
-		required: true,
-	},
-	user: [
+  user: [
 		{
 			type: Schema.Types.ObjectId,
 			ref: "User",
 		},
 	],
-	playlist: [
-		{
-			type: Schema.Types.ObjectId,
-			ref: "Playlist",
-		},
-	],
 });
 
-const Post = model("Post", postSchema);
+const Post = mongoose.model('Post', postSchema);
 
 module.exports = Post;

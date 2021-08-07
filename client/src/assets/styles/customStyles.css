@@ -21,19 +21,19 @@
     background-color: var(--independence);
 } */
 
-/* HOME, LOGIN & SIGNUP PAGE SECTION */
-.home-page, .login-page {
+/* GENERIC HOME, APP LOGIN, SPOTIFY LOGIN & SIGNUP PAGE SECTION */
+.home-page, .login-page, .spotify-login-page {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: center;
 }
 
-.home-image, .login-image {
+.home-image, .login-image, .spotify-login-image {
 	margin: 30px;
 }
 
-.home-image img, .login-image img {
+.home-image img, .login-image img, .spotify-login-image img{
 	height: 450px;
 }
 
@@ -53,7 +53,7 @@
 	text-align: center;
 }
 
-.signup-btn, .login-btn {
+.signup-btn, .login-btn, .spotify-login-button {
 	margin: 10px;
 }
 
@@ -151,7 +151,7 @@
 	font-size: smaller;
 }
 
-/* LOGIN AND SIGNUP PAGES */
+/* APP LOGIN AND SIGNUP PAGES */
 .login-page-container, .signup-page-container {
 	display: flex;
 	justify-content: center;
@@ -192,6 +192,12 @@
 
 .login-btn-link, .signup-btn-link {
 	margin: 20px;
+}
+
+/* SPOTIFY LOGIN */
+.spotify-login-button {
+	display: flex;
+	justify-content: center;
 }
 
 /* MUSIC PLAYER SECTION */

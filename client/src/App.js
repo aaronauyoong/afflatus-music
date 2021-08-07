@@ -50,8 +50,10 @@ const client = new ApolloClient({
 // window.localStorage.setItem("code", code);
 
 const code = new URLSearchParams(window.location.search).get("code");
-const spotifyCode = window.localStorage.setItem("code", code)
-console.log(spotifyCode)
+console.log("This is the code retrieved from URLSearchParams ----->", code)
+const setSpotifyCode = localStorage.setItem("code", code);
+const getSpotifyCode = localStorage.getItem("code")
+console.log("This is the code retrieved from localStorage ----->", getSpotifyCode)
 
 function App() {
 	return (
@@ -68,7 +70,7 @@ function App() {
 								<Route exact path="/dashboard" component={Dashboard} />
 								<Route exact path="/myplaylists" component={MyPlaylists} />
 								<Route exact path="/spotifylogin" component={SpotifyLogin} />
-								<Route exact path="/spotifydashboard" component={SpotifyDashboard} code={spotifyCode} />
+								<Route exact path="/spotifydashboard" component={SpotifyDashboard} code={getSpotifyCode} />
 							</Switch>
 						</main>
 					</StoreProvider>

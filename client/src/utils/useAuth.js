@@ -3,7 +3,18 @@ import { useHistory } from "react-router-dom";
 import axios from "axios";
 
 export default function useAuth(code) {
-	console.log("this is the code --->", code);
+
+	// console.log("This is the default code --->", code);
+
+	// if (code === undefined || code === null) {
+	// 	let code = localStorage.getItem("code")
+	// }
+
+	// console.log("After using if statement, calling code", code)
+	
+	// const spotifyCode = localStorage.getItem("code");
+	// console.log("This is the Spotify Code from localStorage--->", spotifyCode);
+
 	const [accessToken, setAccessToken] = useState();
 	const [refreshToken, setRefreshToken] = useState();
 	const [expiresIn, setExpiresIn] = useState();
@@ -23,8 +34,7 @@ export default function useAuth(code) {
 				setRefreshToken(res.data.refreshToken);
 				setExpiresIn(res.data.expiresIn);
 				// below removes extra code section from URL that we dont want (includes clientID, scopes for Spotify etc)
-				window.history.pushState({}, null, "/");
-				window.localStorage.setItem("code", accessToken);
+				window.history.pushState({}, null, "/spotifydashboard");
 			})
 			.catch(() => {
 				// Note: change to history.push("/") once react router is set up with redirect to login
@@ -47,9 +57,7 @@ export default function useAuth(code) {
 					setAccessToken(res.data.accessToken);
 					setExpiresIn(res.data.expiresIn);
 					// below removes extra code section from URL that we dont want (includes clientID, scopes for Spotify etc)
-					window.history.pushState({}, null, "/");
-					window.localStorage.removeItem("code");
-					window.localStorage.setItem("code", accessToken)
+					window.history.pushState({}, null, "/spotifydashboard");
 				})
 				.catch((err) => {
 					// Note: change to history.push("/") once react router is set up with redirect to login

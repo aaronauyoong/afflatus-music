@@ -12,7 +12,14 @@ const spotifyApi = new SpotifyWebApi({
 });
 
 export default function SpotifyDashboard({ code }) {
-	const accessToken = useAuth(code);
+	console.log("This is the code being called in function SpotifyDashboard ----->", code);
+
+	const accessToken = localStorage.getItem("code");
+	console.log("This is the Spotify code retrieved from localStorage ----->", accessToken);
+
+	// const accessToken = useAuth(getSpotifyCode);
+	// console.log("This is the accessToken ----->", accessToken);
+
 	const [search, setSearch] = useState("");
 	const [searchResults, setSearchResults] = useState([]);
 	const [playingTrack, setPlayingTrack] = useState();

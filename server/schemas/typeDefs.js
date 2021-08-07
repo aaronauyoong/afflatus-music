@@ -5,46 +5,40 @@ const typeDefs = gql`
 		_id: ID
 		postTitle: String
 		postContent: String
-		createdAt: String
-		username: [User]
+		user: [User]
 	}
+
 	type User {
 		_id: ID
-		username: String
 		firstName: String
 		lastName: String
 		email: String
 	}
+
 	type Auth {
 		token: ID
 		user: User
 	}
+
 	type Query {
-		getUsers: [User]
-        user(id: ID!): User
-        post(id: ID!): Post
-		getPosts: [Post]
+		users: [User]
+		user(id: ID!): User
+		post(id: ID!): Post
+		posts: [Post]
 	}
+
 	type Mutation {
 		addUser(
-			username: String!
 			firstName: String!
 			lastName: String!
 			email: String!
 			password: String!
 		): Auth
-        addPost(
-            postTitle: String!
-            postContent: String!
-            createdAt: String!
-            user: String!
-        )
 		updateUser(
-			username: String!
-			firstName: String!
-			lastName: String!
-			email: String!
-			password: String!
+			firstName: String
+			lastName: String
+			email: String
+			password: String
 		): User
 		login(email: String!, password: String!): Auth
 	}

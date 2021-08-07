@@ -1,49 +1,56 @@
+const { AuthenticationError } = require("apollo-server-express");
 const { User, Post } = require("../models");
+const { signToken } = require("../utils/auth");
 
-// Create the functions that fulfill the queries defined in `typeDefs.js`
 const resolvers = {
 	Query: {
 		users: async () => {
 			return await User.find({});
 		},
-        user: async (_, args) => {
-            return await User.findById(args.id);
-        },
+		user: async (_, args) => {
+			return await User.findById(args.id);
+		},
 		posts: async () => {
 			return await Post.find({});
 		},
-        post: async (_, args) => {
-            return await Post.findById(args.id);
-        },
+		post: async (_, args) => {
+			return await Post.findById(args.id);
+		},
 	},
 	Mutation: {
 		addUser: async (_, args) => {
 			const user = await User.create(args);
 			const token = signToken(user);
+
 			return { token, user };
 		},
-        addPost: async (_, { postTitle, postContent, createdAt }) => {
-            // Create and return the new School object
-            return await Post.create({ postTitle, postContent, createdAt });
-        },
-		updateUser: async (_, args, context) => {
-			if (context.user) {
-				return await User.findByIdAndUpdate(context.user._id, args, {
-					new: true,
-				});
-			}
-			throw new AuthenticationError("Not logged in");
-		},
+		// addPost: async (_, { products }, context) => {
+		//   console.log(context);
+		//   if (context.user) {
+		//     const order = new Order({ products });
+
+		//     await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } });
+
+		//     return order;
+		//   }
+
+		//   throw new AuthenticationError('Not logged in');
+		// },
 		login: async (_, { email, password }) => {
 			const user = await User.findOne({ email });
+
 			if (!user) {
-				throw new AuthenticationError("Incorrect credentials 1");
+				throw new AuthenticationError("Incorrect credentials");
 			}
+
 			const correctPw = await user.isCorrectPassword(password);
+
 			if (!correctPw) {
-				throw new AuthenticationError("Incorrect credentials 2");
+				throw new AuthenticationError("Incorrect credentials");
 			}
+
 			const token = signToken(user);
+
 			return { token, user };
 		},
 	},

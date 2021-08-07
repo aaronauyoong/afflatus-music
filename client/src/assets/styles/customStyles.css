@@ -151,6 +151,49 @@
 	font-size: smaller;
 }
 
+/* LOGIN AND SIGNUP PAGES */
+.login-page-container, .signup-page-container {
+	display: flex;
+	justify-content: center;
+}
+.login, .signup {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: center;
+	border: solid 5px var(--spacecadet);
+	border-radius: 5px;
+	padding: 30px;
+}
+
+.login h2, .signup h2 {
+	justify-content: center;
+	text-align: center;
+}
+
+.login form, .signup form {
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+.login-form, .signup-form {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	text-align: center;
+}
+
+.login-label, .signup-label {
+	flex-grow: 1;
+	margin-right: 15px;
+}
+
+
+.login-btn-link, .signup-btn-link {
+	margin: 20px;
+}
+
 /* MUSIC PLAYER SECTION */
 .music-player {
 	position: sticky;

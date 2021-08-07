@@ -41,6 +41,10 @@
 	text-align: center;
 }
 
+.welcome-message p {
+	font-style: italic;
+}
+
 .home-buttons {
 	display: flex;
 	flex-wrap: wrap;
@@ -55,24 +59,43 @@
 
 /* NAVBAR SECTION */
 .nav-bar {
+	display: flex;
 	padding: 20px;
 	margin-bottom: 20px;
 	background-color: #333;
 	color: #fff;
 }
 
+.nav-bar header {
+	flex-grow: 1;
+}
+
 .nav-bar a {
 	text-decoration: none;
 	color: #fff;
+	padding: 10px;
 }
 
 .nav-bar a:hover {
-	color: #fff;
+	background-color: var(--gentlegrey);
+	color: var(--spacecadet);
+	border-radius: 5px;
+	transition: 0.5s;
+	cursor: pointer;
 }
 
 .afflatus-title {
 	margin: 0px;
-	font-size: larger;
+	font-size: larger
+}
+
+.nav-bar li {
+	list-style: none;
+}
+
+.nav-links {
+	display: flex;
+	justify-content: flex-end;
 }
 
 /* WELCOME USER SECTION */

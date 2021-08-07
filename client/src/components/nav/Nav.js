@@ -8,7 +8,7 @@ function Nav() {
 	function showNavigation() {
 		if (Auth.loggedIn()) {
 			return (
-				<ul className="flex-row">
+				<ul className="nav-links flex-row">
 					<li className="mx-1">
 						{/* this is not using the Link component to logout or user and then refresh the application to the start */}
 						<a href="/" onClick={() => Auth.logout()}>
@@ -19,28 +19,23 @@ function Nav() {
 			);
 		} else {
 			return (
-				<ul className="flex-row">
-					<li className="mx-1">
-						<Link to="/signup">Signup</Link>
-					</li>
-					<li className="mx-1">
-						<Link to="/login">Login</Link>
-					</li>
-				</ul>
+				<div className="nav-links flex-row">
+					<h6><Link to="/signup" className="nav-links mx-1">Signup</Link></h6>
+					<h6><Link to="/login" className="nav-links mx-1">Login</Link></h6>
+				</div>
 			);
 		}
 	}
 
 	return (
-		<div>
+		<div className="nav-bar">
 			<header>
-				<h1 className="nav-bar">
+				<h1 >
 					<Link to="/" className="afflatus-title">
 						Afflatus Music ©
 					</Link>
 				</h1>
 			</header>
-
 			<nav>{showNavigation()}</nav>
 		</div>
 	);

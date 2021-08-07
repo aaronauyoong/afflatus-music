@@ -6,18 +6,6 @@ import MusicCartoon from "../assets/images/undrawMusicCartoon.svg";
 import SpotifyDashboard from "../components/dashboard/SpotifyDashboard";
 import ExplorePlaylists from "../components/playlist/ExplorePlaylists";
 
-
-// export const getTokenFromUrl = () => {
-// 	return window.location.hash
-// 		.substring(1)
-// 		.split("&")
-// 		.reduce((initial, item) => {
-// 			let parts = item.split("=");
-// 			initial[parts[0]] = decodeURIComponent(parts[1]);
-// 			return initial;
-// 		}, {});
-// };
-
 export default function Home() {
 	return (
 		<div>
@@ -43,11 +31,6 @@ export default function Home() {
 						alt="This is a cartoon of a bird listening to music."
 					/>
 				</div>
-                
-				<Container className="home-buttons">
-					<a href="/login" className="btn btn-success btn-lg login-btn">Login</a>
-					<a href="/signup" className="btn btn-success btn-lg signup-btn">Signup</a>
-				</Container>
 			</div>
 			<Footer />
 		</div>

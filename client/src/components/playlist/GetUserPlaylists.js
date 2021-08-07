@@ -2,8 +2,8 @@ import { React, useState, useEffect } from "react";
 import useAuth from "../../utils/useAuth";
 import { Container, Form } from "react-bootstrap";
 import SpotifyWebApi from "spotify-web-api-node";
-import TrackSearchResult from "../searchResults/TrackSearchResult";
-import Player from "../musicPlayer/Player";
+import TrackSearchResult from "../searchresults/TrackSearchResult";
+import Player from "../musicplayer/Player";
 import GetMyPlaylists from "../../getMyData";
 import "../../assets/styles/customStyles.css";
 
@@ -12,7 +12,9 @@ const spotifyApi = new SpotifyWebApi({
 });
 
 export default function GetUserPlaylists({ code }) {
+	console.log("this is the code", code);
 	const accessToken = useAuth(code);
+	console.log("this is the accessToken", accessToken)
 	const [search, setSearch] = useState("");
 	const [searchResults, setSearchResults] = useState([]);
 	const [playingTrack, setPlayingTrack] = useState();

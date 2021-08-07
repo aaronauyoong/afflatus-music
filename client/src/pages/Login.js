@@ -16,8 +16,10 @@ function Login(props) {
 			});
 			const token = mutationResponse.data.login.token;
 			Auth.login(token);
-		} catch (e) {
-			console.log(e);
+
+			console.log("User is successfully logged in", token)
+		} catch (err) {
+			console.log(err);
 		}
 	};
 
@@ -57,7 +59,7 @@ function Login(props) {
 				</div>
 				{error ? (
 					<div>
-						<p className="error-text">The provided credentials are incorrect</p>
+						<p className="error-text">The provided credentials are incorrect.</p>
 					</div>
 				) : null}
 				<div className="flex-row flex-end">

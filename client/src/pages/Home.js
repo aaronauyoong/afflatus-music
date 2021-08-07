@@ -5,16 +5,16 @@ import "../assets/styles/customStyles.css";
 import MusicCartoon from "../assets/images/undrawMusicCartoon.svg";
 
 
-export const getTokenFromUrl = () => {
-	return window.location.hash
-		.substring(1)
-		.split("&")
-		.reduce((initial, item) => {
-			let parts = item.split("=");
-			initial[parts[0]] = decodeURIComponent(parts[1]);
-			return initial;
-		}, {});
-};
+// export const getTokenFromUrl = () => {
+// 	return window.location.hash
+// 		.substring(1)
+// 		.split("&")
+// 		.reduce((initial, item) => {
+// 			let parts = item.split("=");
+// 			initial[parts[0]] = decodeURIComponent(parts[1]);
+// 			return initial;
+// 		}, {});
+// };
 
 export default function Home() {
 	return (

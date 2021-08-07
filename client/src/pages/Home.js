@@ -2,8 +2,7 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import Footer from "../components/footer/Footer";
 import "../assets/styles/customStyles.css";
-import MusicCartoon from "../assets/images/undrawMusicCartoon.svg";
-import SpotifyDashboard from "../components/dashboard/SpotifyDashboard";
+import MyCollection from "../components/playlist/MyCollection";
 import ExplorePlaylists from "../components/playlist/ExplorePlaylists";
 
 export default function Home() {
@@ -18,10 +17,10 @@ export default function Home() {
 					className="dashboard-menu d-flex flex-row align-items-center py-2"
 					style={{ flexGrow: 1 }}
 				>
-					<div className="spotify-dashboard my-playlists">
-						<SpotifyDashboard />
+					<div className="my-collection">
+						<MyCollection />
 					</div>
-                    <div className="my-playlists">
+                    <div className="explore-playlists">
 						<ExplorePlaylists/>
 					</div>
 				</div>

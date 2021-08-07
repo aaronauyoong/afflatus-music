@@ -121,7 +121,7 @@
 	padding: 30px;
 }
 
-.my-playlists, .explore-playlists{
+.my-collection, .explore-playlists{
 	text-align: center;
 	align-items: center;
 	padding: 30px;
@@ -134,16 +134,21 @@
 	overflow: hidden;
 }
 
-.my-playlists:hover, .explore-playlists:hover{
+.my-collection:hover, .explore-playlists:hover{
 	background-color: var(--lightsteelblue);
 	transition: 0.5s;
 	cursor: pointer;
 }
 
-.my-playlists img, .explore-playlists img {
+.my-collection img, .explore-playlists img {
 	max-height: 400px;
 	max-width: 400px;
 	padding-bottom: 15px;
+}
+
+.disclaimers {
+	font-style: italic;
+	font-size: smaller;
 }
 
 /* MUSIC PLAYER SECTION */

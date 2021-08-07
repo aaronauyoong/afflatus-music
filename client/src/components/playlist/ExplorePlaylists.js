@@ -54,8 +54,9 @@ const ExplorePlaylists = ({ code }) => {
 			>
 				<img src={GroupMusicCartoon} alt="Illustration of a group of people and music notes" />
 			</a>
-            <h1>EXPLORE</h1>
-            <p>Browse playlists specially curated by others.</p>
+            <h1>EXPLORE PLAYLISTS</h1>
+            <p>Browse playlists specially curated by other music lovers.</p>
+			<p className="disclaimers">Requires an account with us.</p>
 		</div>
 	);
 };

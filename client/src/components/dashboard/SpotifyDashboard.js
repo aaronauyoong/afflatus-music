@@ -1,12 +1,10 @@
 import { React, useState, useEffect } from "react";
-import MyPlaylists from "../playlist/SpotifyGetPlaylist";
-// import ExplorePlaylists from "../../components/playlist/ExplorePlaylists";
 import useAuth from "../../utils/useAuth";
 import { Container, Form } from "react-bootstrap";
 import SpotifyWebApi from "spotify-web-api-node";
-import TrackSearchResult from "../searchResults/TrackSearchResult";
-import Player from "../musicPlayer/Player";
-import GetMyPlaylists from "../../getMyData";
+import TrackSearchResult from "../searchresults/TrackSearchResult";
+import Player from "../musicplayer/Player";
+// import GetMyPlaylists from "../../getMyData";
 import "../../assets/styles/customStyles.css";
 
 const spotifyApi = new SpotifyWebApi({
@@ -86,29 +84,29 @@ export default function SpotifyDashboard({ code }) {
     }
 
     // get playlist tracks 
-    async function getPlaylistTracks(playlistId, playlistName) {
-        const data = await spotifyApi.getPlaylistTracks(playlistId, {
-            offset: 1,
-            limit: 10, 
-            fields: 'items'
+    // async function getPlaylistTracks(playlistId, playlistName) {
+    //     const data = await spotifyApi.getPlaylistTracks(playlistId, {
+    //         offset: 1,
+    //         limit: 10, 
+    //         fields: 'items'
     
-        })
+    //     })
 
-        // console.log("The playlist contains these tracks %j", data.body);
-        // console.log("The playlist contains these tracks: ", data.body.items[0].track)
-        console.log(playlistName + " contains these tracks:");
+    //     // console.log("The playlist contains these tracks %j", data.body);
+    //     // console.log("The playlist contains these tracks: ", data.body.items[0].track)
+    //     console.log(playlistName + " contains these tracks:");
 
-        let tracks = [];
+    //     let tracks = [];
 
-        for (let track_obj of data.body.items) {
-            const track = track_obj.track
-            tracks.push(track);
-            console.log(track.name + " : " + track.artists[0].name)
-          }
+    //     for (let track_obj of data.body.items) {
+    //         const track = track_obj.track
+    //         tracks.push(track);
+    //         console.log(track.name + " : " + track.artists[0].name)
+    //       }
 
-        console.log("----------+++++++++++")
-        return tracks
-    }
+    //     console.log("----------+++++++++++")
+    //     return tracks
+    // }
 
 	function getDisplayName() {
 		(async () => {
@@ -145,17 +143,6 @@ export default function SpotifyDashboard({ code }) {
 			<main className="dashboard-home">
 				<div className="welcome-user d-flex flex-column py-2">
 					<h1 id="welcome-user"><placeholder>Welcome.</placeholder></h1>
-				</div>
-				<div
-					className="dashboard-menu d-flex flex-row align-items-center py-2"
-					style={{ flexGrow: 1 }}
-				>
-					<div className="my-playlists">
-						<MyPlaylists accessToken={accessToken} />
-					</div>
-				</div>
-				<div>
-					<GetMyPlaylists accessToken={accessToken} code={code} />
 				</div>
 				<button onClick={getMyData}>
 					Get my data

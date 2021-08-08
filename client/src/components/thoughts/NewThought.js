@@ -86,7 +86,7 @@ const ThoughtForm = () => {
 
 								<div className="share-thoughts">
 									<button
-										className="btn btn-primary btn-block py-3 share-btn"
+										className="share-btn"
 										type="submit"
 									>
 										Share {" "} <i className="fas fa-share"></i>

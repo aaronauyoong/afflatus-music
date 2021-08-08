@@ -12,17 +12,17 @@ export default function ExploreTimeline() {
 	console.log(thoughts);
 	return (
 		<main>
-			<div className="thought-dashboard">
+			<div className="thoughts-dashboard">
 				<div>
 					<NewThought />
 				</div>
-				<div className="thought-timeline">
+				<div className="thoughts-timeline">
 					{loading ? (
 						<div>Gathering thoughts...</div>
 					) : (
 						<ThoughtCard
 							thoughts={thoughts}
-							title="Music Feed. Share your Thoughts on music here!"
+							className="timeline"
 						/>
 					)}
 				</div>

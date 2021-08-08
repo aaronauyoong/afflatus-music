@@ -1,12 +1,5 @@
 import { React } from "react";
-import SpotifyWebApi from "spotify-web-api-node";
-
-// Image Imports
 import SoloMusicCartoon from "../../assets/images/undrawMusicImagination.svg";
-
-// const spotifyApi = new SpotifyWebApi({
-// 	clientId: "2ae77a009ef04f15b6de9046ff925ebb",
-// });
 
 const SpotifyGetPlaylists = () => {
 

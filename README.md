@@ -13,16 +13,14 @@ Deployment Link:
 ## Table of Contents
 * [Idea](#Idea)
 * [Description](#Description)
-* [License](#License)
 * [Features](#Features)
-* [Installation](#Installation)
+* [License](#License)
+* [Packages](#Packages)
 * [Contributions](#Contributions)
-* [Credits](#Credits)
-* [Tests](#Tests)
 * [Questions](#Questions)
 
 
-## Idea - Afflatus Music Blog for Music Lovers
+## Idea
 * Connection to Spotify API
 * Sharing music you love with other users (kind of like reddit?)
 * Create posts, edit, delete posts
@@ -34,6 +32,10 @@ Afflatus Music is a web application that has two main functionalities:
 1. Functioning as a mini-Spotify-clone with links with Spotify’s API. It allows users to connect to Spotify, listen to music and view their playlists.
 2. Functions as a mini Twitter-clone, allowing users to post and share their playlists as "thoughts" with other users. These posts are not limited to just sharing playlists, as users can share albums, artists and connect with other like-minded individuals. 
 
+## Features
+* Links to Spotify API for listening to music, getting user data.
+* Mini social media aspect, where users can share their thoughts on playlists and music in a Twitter-like forum. 
+
 ## License
 MIT License
 <br>
@@ -41,7 +43,6 @@ Copyright © 2021-Present Aaron Au Yoong. All rights reserved.
 <br>
 
 ## Packages
-
 Front-end: 
 * Spotify-Web-API-Node
 * React-Spotify-Web-Playback
@@ -66,6 +67,10 @@ Back-end:
 Development:
 * Concurrently
 * Nodemon
+
+## Contributions
+If you would like to become a contributor to this project, please contact me via my GitHub profile: [Aaron Au Yoong's GitHub Profile](https://github.com/aaronauyoong)
+<br>
 
 ## Questions
 Any questions? Feel free to contact me via my GitHub profile: [Aaron Au Yoong's GitHub Profile](https://github.com/aaronauyoong)

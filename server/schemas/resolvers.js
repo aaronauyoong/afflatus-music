@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server-express");
-const { User, Post } = require("../models");
+const { User, Thought } = require("../models");
 const { signToken } = require("../utils/auth");
 
 const resolvers = {
@@ -25,8 +25,8 @@ const resolvers = {
 
 			return { token, user };
 		},
-		addThought: async (_, { thoughtText, thoughtAuthor }) => {
-			const thought = await Thought.create({ thoughtText, thoughtAuthor });
+		addThought: async (_, { thoughtContent, thoughtAuthor }) => {
+			const thought = await Thought.create({ thoughtContent, thoughtAuthor });
 
 			await User.findOneAndUpdate(
 				{ username: thoughtAuthor },

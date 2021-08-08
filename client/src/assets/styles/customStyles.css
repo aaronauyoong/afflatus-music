@@ -117,8 +117,8 @@ body {
 
 /* DASHBOARD MENU SECTION */
 .dashboard-home {
-	min-height: 100vh;
-	min-width: 100vw;
+	max-height: 100vh;
+	max-width: 100vw;
 }
 
 .dashboard-menu {
@@ -127,6 +127,7 @@ body {
 	justify-content: center;
 	flex-direction: row;
 	padding: 30px;
+	max-width: 100vw;
 }
 
 .my-collection,
@@ -333,5 +334,23 @@ body {
 
 /* FOOTER SECTION */
 .footer {
-	margin: 30px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	margin: 10px 20px 30px;
+}
+
+.credits {
+	font-size: smaller;
+}
+
+.icon-links {
+	display: flex;
+	justify-content: space-evenly;
+	color: var(--spacecadet)
+}
+
+.icon-links a {
+	color: var(--spacecadet)
 }

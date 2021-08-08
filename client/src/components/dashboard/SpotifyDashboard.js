@@ -12,13 +12,10 @@ const spotifyApi = new SpotifyWebApi({
 });
 
 export default function SpotifyDashboard({ code }) {
-	console.log("This is the code being called in function SpotifyDashboard ----->", code);
 
-	const accessToken = useAuth(localStorage.getItem("code"));
-	console.log("This is the Spotify code retrieved from localStorage ----->", accessToken);
-
-	// const accessToken = useAuth(getSpotifyCode);
-	// console.log("This is the accessToken ----->", accessToken);
+	const authToken = window.localStorage.getItem("code");
+	const accessToken = useAuth(authToken);
+	console.log("This is the accessToken ----->", accessToken);
 
 	const [search, setSearch] = useState("");
 	const [searchResults, setSearchResults] = useState([]);
@@ -31,6 +28,7 @@ export default function SpotifyDashboard({ code }) {
 
 	useEffect(() => {
 		if (!accessToken) return;
+		console.log("setting access token", accessToken)
 		spotifyApi.setAccessToken(accessToken);
 	}, [accessToken]);
 

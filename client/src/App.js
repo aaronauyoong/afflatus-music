@@ -8,7 +8,6 @@ import {
 import { setContext } from "@apollo/client/link/context";
 
 // import axios from "axios";
-
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Nav from "./components/nav/Nav";
 import MyPlaylists from "./components/playlist/GetUserPlaylists";
@@ -51,7 +50,7 @@ const client = new ApolloClient({
 
 const code = new URLSearchParams(window.location.search).get("code");
 console.log("This is the code retrieved from URLSearchParams ----->", code)
-const setSpotifyCode = localStorage.setItem("code", code);
+localStorage.setItem("code", code);
 const getSpotifyCode = localStorage.getItem("code")
 console.log("This is the code retrieved from localStorage ----->", getSpotifyCode)
 
@@ -71,6 +70,9 @@ function App() {
 								<Route exact path="/myplaylists" component={MyPlaylists} />
 								<Route exact path="/spotifylogin" component={SpotifyLogin} />
 								<Route exact path="/spotifydashboard" component={SpotifyDashboard} code={getSpotifyCode} />
+								<Route exact path="/exploreplaylists" component={ExplorePlaylists} />
+								<Route exact path="/writepost" component={WritePost} />
+								<Route exact path="/viewpost" component={Viewpost} />
 							</Switch>
 						</main>
 					</StoreProvider>

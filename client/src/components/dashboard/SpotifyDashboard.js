@@ -14,7 +14,7 @@ const spotifyApi = new SpotifyWebApi({
 export default function SpotifyDashboard({ code }) {
 	console.log("This is the code being called in function SpotifyDashboard ----->", code);
 
-	const accessToken = localStorage.getItem("code");
+	const accessToken = useAuth(localStorage.getItem("code"));
 	console.log("This is the Spotify code retrieved from localStorage ----->", accessToken);
 
 	// const accessToken = useAuth(getSpotifyCode);

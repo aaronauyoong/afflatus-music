@@ -20,7 +20,7 @@ server.applyMiddleware({ app });
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 // using spotifyRoutes to retrieve data from SpotifyAPI 
-app.use(spotifyRoutes)
+app.use(spotifyRoutes);
 
 
 // if (process.env.NODE_ENV === 'production') {

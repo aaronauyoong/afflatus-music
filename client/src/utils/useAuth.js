@@ -4,6 +4,8 @@ import axios from "axios";
 
 export default function useAuth(code) {
 
+	console.log("This is the code being rendered in useAuth.js ----->", code);
+
 	// console.log("This is the default code --->", code);
 
 	// if (code === undefined || code === null) {

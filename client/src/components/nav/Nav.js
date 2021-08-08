@@ -1,34 +1,42 @@
 import React from "react";
-// import { NavbarContainer, Link, Logo, Menu, Button } from "react-bootstrap";
+import Auth from "../../utils/auth";
+import { Link } from "react-router-dom";
 import "../../assets/styles/customStyles.css";
-// import { useAuth } from "../../use-auth.js";
 
 function Nav() {
-	// Get auth state and re-render anytime it changes
-	// const auth = useAuth();
-	return (
-		<div>
-			<header>
-				<nav className="nav-bar">
-					<a className="afflatus-title" href="/">Afflatus Music ©</a>
-				</nav>
-			</header>
 
-            {/* <NavbarContainer>
- 			<Logo />
- 			<Menu>
- 				<Link to="/about">About</Link>
- 				<Link to="/contact">Contact</Link>
- 				{auth.user ? (
- 					<div>
- 						<Link to="/account">Account ({auth.user.email})</Link>
- 						<Button onClick={() => auth.signout()}>Signout</Button>
- 					</div>
- 				) : (
- 					<Link to="/signin">Signin</Link>
- 				)}
- 			</Menu>
- 		</NavbarContainer> */}
+	function showNavigation() {
+		if (Auth.loggedIn()) {
+			return (
+				<ul className="nav-links flex-row">
+					<li className="mx-1">
+						{/* this is not using the Link component to logout or user and then refresh the application to the start */}
+						<a href="/" onClick={() => Auth.logout()}>
+							Logout
+						</a>
+					</li>
+				</ul>
+			);
+		} else {
+			return (
+				<div className="nav-links flex-row">
+					<h6><Link to="/signup" className="nav-links mx-1">Signup</Link></h6>
+					<h6><Link to="/login" className="nav-links mx-1">Login</Link></h6>
+				</div>
+			);
+		}
+	}
+
+	return (
+		<div className="nav-bar">
+			<header>
+				<h1 >
+					<Link to="/" className="afflatus-title">
+						Afflatus Music ©
+					</Link>
+				</h1>
+			</header>
+			<nav>{showNavigation()}</nav>
 		</div>
 	);
 }

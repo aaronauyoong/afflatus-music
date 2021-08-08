@@ -12,7 +12,9 @@ const spotifyApi = new SpotifyWebApi({
 });
 
 export default function GetUserPlaylists({ code }) {
+	console.log("this is the code", code);
 	const accessToken = useAuth(code);
+	console.log("this is the accessToken", accessToken)
 	const [search, setSearch] = useState("");
 	const [searchResults, setSearchResults] = useState([]);
 	const [playingTrack, setPlayingTrack] = useState();

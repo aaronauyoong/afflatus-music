@@ -2,7 +2,14 @@ import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 
+
+// POST https://accounts.spotify.com/api/token
+
 export default function useAuth(code) {
+
+	console.log("This is the code being rendered in useAuth.js ----->", code);
+	
+
 	const [accessToken, setAccessToken] = useState();
 	const [refreshToken, setRefreshToken] = useState();
 	const [expiresIn, setExpiresIn] = useState();
@@ -12,13 +19,13 @@ export default function useAuth(code) {
 
 	useEffect(() => {
 		axios
-			.post("/login", {
+			.post("/spotifylogin", {
 				code,
 			})
 			.then((res) => {
 				// console.log(res.data);
-				// throw new Error('testtt')
 				setAccessToken(res.data.accessToken);
+				console.log("CONSOLE LOG FOR access token", res.data.accessToken);
 				setRefreshToken(res.data.refreshToken);
 				setExpiresIn(res.data.expiresIn);
 				// below removes extra code section from URL that we dont want (includes clientID, scopes for Spotify etc)
@@ -29,7 +36,7 @@ export default function useAuth(code) {
 				history.push("/");
 				// window.location = "/";
 			});
-	}, [code, history]);
+	}, [code, history, accessToken]);
 
 	// whenever refresh token changes/expires, run the below useEffect()
 	useEffect(() => {
@@ -56,7 +63,7 @@ export default function useAuth(code) {
 		}, (expiresIn - 60) * 1000);
 
 		return () => clearInterval(interval);
-	}, [refreshToken, expiresIn, history]);
+	}, [refreshToken, expiresIn, history, accessToken]);
 
 	return accessToken;
 }

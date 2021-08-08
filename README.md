@@ -1,6 +1,26 @@
-# Project 3 - Afflatus Music
+# Afflatus Music
+
+Project Owner: Aaron Au Yoong
+
+<br>
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+<br>
+
+Deployment Link: 
+
+## Table of Contents
+* [Idea](#Idea)
+* [Description](#Description)
+* [License](#License)
+* [Features](#Features)
+* [Installation](#Installation)
+* [Contributions](#Contributions)
+* [Credits](#Credits)
+* [Tests](#Tests)
+* [Questions](#Questions)
+
 
 ## Idea - Afflatus Music Blog for Music Lovers
 * Connection to Spotify API
@@ -8,95 +28,44 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 * Create posts, edit, delete posts
 * Create, edit, delete comments
 
-## To Do 
-* Wireframe
-* Initial Pitch
 
 ## Description
-Afflatus Music is a web application that allows users to create playlists and share them as posts amongst other users. Users can comment on posts and recommend songs to be added to the playlist. This application functions as a mini-Spotify-clone, and links with Spotify’s developer API. 
+Afflatus Music is a web application that has two main functionalities: 
+1. Functioning as a mini-Spotify-clone with links with Spotify’s API. It allows users to connect to Spotify, listen to music and view their playlists.
+2. Functions as a mini Twitter-clone, allowing users to post and share their playlists as "thoughts" with other users. These posts are not limited to just sharing playlists, as users can share albums, artists and connect with other like-minded individuals. 
 
-## Implementation Steps
-* Home Page
-* Connection to Spotify API (Backend)
-* Create User
-* Create Posts that has link to Spotify Music
+## License
+MIT License
+<br>
+Copyright © 2021-Present Aaron Au Yoong. All rights reserved.
+<br>
 
-## Packages used
-* Spotify-Web-API-Node (New)
-* React-Spotify-Web-Playback (New)
-* Express
+## Packages
+
+Front-end: 
+* Spotify-Web-API-Node
+* React-Spotify-Web-Playback
 * Bootstrap
 * React Bootstrap
-* Apollo
+* React Router
+* JWT-Decode
+* @Apollo/Client
+
+Back-end:
+* Express
+* Bcrypt
+* Apollo-Server
 * Axios
+* Mongoose
 * Dotenv
 * GraphQL
-* React Router
 * Cors
+* Path
+* Spotify-Web-Api-Node
 
-## Available Scripts
+Development:
+* Concurrently
+* Nodemon
 
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Questions
+Any questions? Feel free to contact me via my GitHub profile: [Aaron Au Yoong's GitHub Profile](https://github.com/aaronauyoong)

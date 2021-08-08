@@ -3,7 +3,7 @@ import { Container } from "react-bootstrap";
 import Footer from "../components/footer/Footer";
 import "../assets/styles/customStyles.css";
 import MyCollection from "../components/playlist/MyCollection";
-import ExplorePlaylists from "../components/playlist/ExplorePlaylists";
+import ExplorePlaylists from "../components/playlist/ExplorePlaylistsDiv";
 
 export default function Home() {
 	return (

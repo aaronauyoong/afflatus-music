@@ -18,7 +18,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import ExploreThoughts from "./pages/ExploreThoughts";
+import ExplorePlaylists from "./pages/ExplorePlaylists";
 
 // Components Imports
 import Nav from "./components/nav/Nav";
@@ -81,7 +81,7 @@ function App() {
 								<Route
 									exact
 									path="/exploreplaylists"
-									component={ExploreThoughts}
+									component={ExplorePlaylists}
 								/>
 							</Switch>
 						</main>

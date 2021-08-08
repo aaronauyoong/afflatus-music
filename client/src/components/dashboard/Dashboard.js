@@ -1,7 +1,7 @@
 import { React } from "react";
 import "../../assets/styles/customStyles.css";
 import SpotifyDashboard from "./SpotifyDashboard";
-import ExplorePlaylists from "../playlist/ExplorePlaylists";
+import ExplorePlaylists from "../playlist/ExplorePlaylistsDiv";
 
 export default function Dashboard() {
 	

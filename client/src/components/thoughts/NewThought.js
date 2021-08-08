@@ -31,7 +31,7 @@ const ThoughtForm = () => {
 		event.preventDefault();
 
 		try {
-			const { data } = await addThought({
+			await addThought({
 				variables: {
 					thoughtContent,
 					thoughtAuthor: Auth.getProfile().data.username,
@@ -56,7 +56,7 @@ const ThoughtForm = () => {
 	return (
 		<div className="user-thoughts">
 			<header className="user-thought-title">
-				<h3>Share your playlists and music recommendations here <i class="fas fa-music"></i> </h3>
+				<h3>Share your playlists and music recommendations here <i className="fas fa-music"></i> </h3>
 			</header>
 			<div className="user-thoughts">
 				{Auth.loggedIn() ? (
@@ -89,7 +89,7 @@ const ThoughtForm = () => {
 										className="btn btn-primary btn-block py-3 share-btn"
 										type="submit"
 									>
-										Share {" "} <i class="fas fa-share"></i>
+										Share {" "} <i className="fas fa-share"></i>
 									</button>
 								</div>
 							</div>

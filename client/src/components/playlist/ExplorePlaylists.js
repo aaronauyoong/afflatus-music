@@ -1,8 +1,5 @@
-import { React, useState, useEffect } from "react";
-
-// Image Imports
+import React from "react";
 import GroupMusicCartoon from "../../assets/images/undrawComposeMusicGroup.svg";
-
 
 export default function ExplorePlaylists(){
 

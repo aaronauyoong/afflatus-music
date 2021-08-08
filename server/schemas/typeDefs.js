@@ -6,7 +6,6 @@ const typeDefs = gql`
 		thoughtContent: String
 		thoughtAuthor: String
 		createdAt: String
-		comments: [Comment]!
 	}
 
 	type User {

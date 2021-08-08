@@ -5,19 +5,12 @@ const thoughtSeeds = require("./thoughtSeeds.json");
 
 db.once("open", async () => {
 	try {
-		// await Comment.deleteMany({});
-		// // Comment seeds to be inserted.
-
-		// console.log(
-		// 	"//----------------------------Comments seeded----------------------------//"
-		// );
-
 		await Thought.deleteMany({});
-		console.log("Old test post (thought) data deleted.")
+		console.log("Old test thought data deleted.")
 		await Thought.insertMany(thoughtSeeds);
 
 		console.log(
-			"//----------------------------Posts seeded----------------------------//"
+			"//----------------------------Thoughts seeded----------------------------//"
 		);
 
 		await User.deleteMany({});

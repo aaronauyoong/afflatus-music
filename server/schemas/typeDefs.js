@@ -1,12 +1,19 @@
 const { gql } = require("apollo-server-express");
 
 const typeDefs = gql`
-	type Post {
+	type Thought {
 		_id: ID
-		postTitle: String
-		postContent: String
+		thoughtContent: String
+		thoughtAuthor: String
 		createdAt: String
-		user: [User]
+		comments: [Comment]!
+	}
+
+	type Comment {
+		_id: ID
+		commentText: String
+		commentAuthor: String
+		createdAt: String
 	}
 
 	type User {
@@ -25,8 +32,8 @@ const typeDefs = gql`
 	type Query {
 		users: [User]
 		user(id: ID!): User
-		post(id: ID!): Post
-		posts: [Post]
+		thoughts(username: String): [Thought]
+		thought(thoughtId: ID!): Thought
 	}
 
 	type Mutation {
@@ -37,12 +44,14 @@ const typeDefs = gql`
 			email: String!
 			password: String!
 		): Auth
-		addPost(
-			postTitle: String!
-			postContent: String!
-			createdAt: String!
-			user: String!
-		): Post
+		addThought(thoughtText: String!, thoughtAuthor: String!): Thought
+		addComment(
+			thoughtId: ID!
+			commentText: String!
+			commentAuthor: String!
+		): Thought
+		removeThought(thoughtId: ID!): Thought
+		removeComment(thoughtId: ID!, commentId: ID!): Thought
 		updateUser(
 			userName: String!
 			firstName: String!

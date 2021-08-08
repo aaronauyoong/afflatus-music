@@ -5,16 +5,17 @@ const { signToken } = require("../utils/auth");
 const resolvers = {
 	Query: {
 		users: async () => {
-			return await User.find({});
+			return User.find().populate("thoughts");
 		},
-		user: async (_, args) => {
-			return await User.findById(args.id);
+		user: async (parent, { username }) => {
+			return User.findOne({ username }).populate("thoughts");
 		},
-		posts: async () => {
-			return await Post.find({});
+		thoughts: async (parent, { username }) => {
+			const params = username ? { username } : {};
+			return Thought.find(params).sort({ createdAt: -1 });
 		},
-		post: async (_, args) => {
-			return await Post.findById(args.id);
+		thought: async (parent, { thoughtId }) => {
+			return Thought.findOne({ _id: thoughtId });
 		},
 	},
 	Mutation: {
@@ -24,20 +25,37 @@ const resolvers = {
 
 			return { token, user };
 		},
-		addPost: async (_, { postTitle, postContent, createdAt, user }) => {
-			const post = await Post.create({
-				postTitle,
-				postContent,
-				createdAt,
-				user,
-			});
+		addThought: async (_, { thoughtText, thoughtAuthor }) => {
+			const thought = await Thought.create({ thoughtText, thoughtAuthor });
 
-			// await User.findOneAndUpdate(
-			//   { username: thoughtAuthor },
-			//   { $addToSet: { thoughts: thought._id } }
-			// );
+			await User.findOneAndUpdate(
+				{ username: thoughtAuthor },
+				{ $addToSet: { thoughts: thought._id } }
+			);
 
-			return post;
+			return thought;
+		},
+		removeThought: async (parent, { thoughtId }) => {
+			return Thought.findOneAndDelete({ _id: thoughtId });
+		},
+		addComment: async (_, { thoughtId, commentText, commentAuthor }) => {
+			return Thought.findOneAndUpdate(
+				{ _id: thoughtId },
+				{
+					$addToSet: { comments: { commentText, commentAuthor } },
+				},
+				{
+					new: true,
+					runValidators: true,
+				}
+			);
+		},
+		removeComment: async (parent, { thoughtId, commentId }) => {
+			return Thought.findOneAndUpdate(
+				{ _id: thoughtId },
+				{ $pull: { comments: { _id: commentId } } },
+				{ new: true }
+			);
 		},
 		login: async (_, { email, password }) => {
 			const user = await User.findOne({ email });

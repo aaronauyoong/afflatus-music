@@ -6,7 +6,7 @@ import { QUERY_THOUGHTS } from "../utils/queries";
 import NewThought from "../components/thoughts/NewThought";
 import ThoughtCard from "../components/thoughts/ThoughtCard";
 
-export default function ExploreMusicThoughts() {
+export default function ExploreTimeline() {
 	const { loading, data } = useQuery(QUERY_THOUGHTS);
 	const thoughts = data?.thoughts || [];
 	console.log(thoughts);

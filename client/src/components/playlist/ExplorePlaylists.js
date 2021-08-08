@@ -9,7 +9,7 @@ export default function ExplorePlaylists(){
 	return (
 		<div>
 			<a
-				href="/exploreplaylists"
+				href="/exploretimeline"
 				style={{ padding: "10px", margin: "10px" }}
 			>
 				<img src={GroupMusicCartoon} alt="Illustration of a group of people and music notes" />

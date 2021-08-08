@@ -18,7 +18,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
-import ExplorePlaylists from "./pages/ExplorePlaylists";
+import ExploreTimeline from "./pages/ExploreTimeline";
 
 // Components Imports
 import Nav from "./components/nav/Nav";
@@ -80,8 +80,8 @@ function App() {
 								</Route>
 								<Route
 									exact
-									path="/exploreplaylists"
-									component={ExplorePlaylists}
+									path="/exploretimeline"
+									component={ExploreTimeline}
 								/>
 							</Switch>
 						</main>

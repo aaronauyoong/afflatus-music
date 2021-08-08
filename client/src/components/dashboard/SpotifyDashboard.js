@@ -12,7 +12,6 @@ const spotifyApi = new SpotifyWebApi({
 });
 
 export default function SpotifyDashboard({ code }) {
-
 	const authToken = window.localStorage.getItem("code");
 	const accessToken = useAuth(authToken);
 	console.log("This is the accessToken ----->", accessToken);
@@ -28,7 +27,7 @@ export default function SpotifyDashboard({ code }) {
 
 	useEffect(() => {
 		if (!accessToken) return;
-		console.log("setting access token", accessToken)
+		console.log("setting access token", accessToken);
 		spotifyApi.setAccessToken(accessToken);
 	}, [accessToken]);
 
@@ -65,53 +64,53 @@ export default function SpotifyDashboard({ code }) {
 		(async () => {
 			const me = await spotifyApi.getMe();
 			console.log(me.body);
-			console.log(me.body.display_name)
+			console.log(me.body.display_name);
 			getUserPlaylists(me.body.id);
-		})().catch(err => {
-			console.error(err)
-		})
+		})().catch((err) => {
+			console.error(err);
+		});
 	}
 
 	// get my playlists
-    async function getUserPlaylists(userName) {
+	async function getUserPlaylists(userName) {
 		// console.log("dashboard: ", accessToken);
-        const data = await spotifyApi.getUserPlaylists(userName);
+		const data = await spotifyApi.getUserPlaylists(userName);
 
-        console.log("----------+++++++++");
-        // let playlists = [];
+		console.log("----------+++++++++");
+		// let playlists = [];
 
-        for(let playlist of data.body.items) {
-            console.log(playlist.name + " " + playlist.id)
+		for (let playlist of data.body.items) {
+			console.log(playlist.name + " " + playlist.id);
 
-            // let tracks = await getPlaylistTracks(playlist.id, playlist.name);
-            // console.log(tracks)
-        }
-    }
+			// let tracks = await getPlaylistTracks(playlist.id, playlist.name);
+			// console.log(tracks)
+		}
+	}
 
-    // get playlist tracks 
-    // async function getPlaylistTracks(playlistId, playlistName) {
-    //     const data = await spotifyApi.getPlaylistTracks(playlistId, {
-    //         offset: 1,
-    //         limit: 10, 
-    //         fields: 'items'
-    
-    //     })
+	// get playlist tracks
+	// async function getPlaylistTracks(playlistId, playlistName) {
+	//     const data = await spotifyApi.getPlaylistTracks(playlistId, {
+	//         offset: 1,
+	//         limit: 10,
+	//         fields: 'items'
 
-    //     // console.log("The playlist contains these tracks %j", data.body);
-    //     // console.log("The playlist contains these tracks: ", data.body.items[0].track)
-    //     console.log(playlistName + " contains these tracks:");
+	//     })
 
-    //     let tracks = [];
+	//     // console.log("The playlist contains these tracks %j", data.body);
+	//     // console.log("The playlist contains these tracks: ", data.body.items[0].track)
+	//     console.log(playlistName + " contains these tracks:");
 
-    //     for (let track_obj of data.body.items) {
-    //         const track = track_obj.track
-    //         tracks.push(track);
-    //         console.log(track.name + " : " + track.artists[0].name)
-    //       }
+	//     let tracks = [];
 
-    //     console.log("----------+++++++++++")
-    //     return tracks
-    // }
+	//     for (let track_obj of data.body.items) {
+	//         const track = track_obj.track
+	//         tracks.push(track);
+	//         console.log(track.name + " : " + track.artists[0].name)
+	//       }
+
+	//     console.log("----------+++++++++++")
+	//     return tracks
+	// }
 
 	function getDisplayName() {
 		(async () => {
@@ -119,13 +118,13 @@ export default function SpotifyDashboard({ code }) {
 			const userDisplayName = user.body.display_name;
 			const username = `<h1>Welcome, ${userDisplayName}.</h1>`;
 			document.getElementById("welcome-user").innerHTML = username;
-		})().catch(err => {
-			console.error(err)
-		})
+		})().catch((err) => {
+			console.error(err);
+		});
 	}
 
 	getDisplayName();
-	
+
 	return (
 		<div>
 			<Container className="d-flex flex-column py-2">
@@ -146,15 +145,26 @@ export default function SpotifyDashboard({ code }) {
 				</div>
 			</Container>
 			<main className="dashboard-home">
-				<div className="welcome-user d-flex flex-column py-2">
-					<h1 id="welcome-user"><placeholder>Welcome.</placeholder></h1>
+				<div className="d-flex flex-column py-2 welcome-user ">
+					<h1 id="welcome-user">
+						<placeholder>Welcome.</placeholder>
+					</h1>
 				</div>
-				<button onClick={getMyData}>
-					Get my data
-				</button>
+				<div className="get-data-button">
+					<button className="get-my-playlists" onClick={getMyData}>
+						Get My Playlists
+					</button>
+				</div>
+				<div className="display-user-playlists">
+					<div className="user-playlists"></div>
+				</div>
 			</main>
 			<div className="music-player">
-				<Player accessToken={accessToken} code={code} trackUri={playingTrack?.uri} />
+				<Player
+					accessToken={accessToken}
+					code={code}
+					trackUri={playingTrack?.uri}
+				/>
 			</div>
 		</div>
 	);

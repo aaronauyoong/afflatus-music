@@ -326,6 +326,25 @@ body {
 	flex-direction: row;
 }
 
+/* SPOTIFY DASHBOARD */
+.get-data-button {
+	display: flex;
+	justify-content: center;
+	margin: 30px;
+}
+
+.get-my-playlists {
+	background-color: transparent;
+	border-radius: 5px;
+}
+
+.get-my-playlists:hover{
+	transition: 0.5s;
+	background-color: var(--silverpink);
+	
+}
+
+
 /* MUSIC PLAYER SECTION */
 .music-player {
 	position: sticky;

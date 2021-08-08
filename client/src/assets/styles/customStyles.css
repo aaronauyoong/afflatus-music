@@ -22,18 +22,24 @@
 } */
 
 /* GENERIC HOME, APP LOGIN, SPOTIFY LOGIN & SIGNUP PAGE SECTION */
-.home-page, .login-page, .spotify-login-page {
+.home-page,
+.login-page,
+.spotify-login-page {
 	display: flex;
 	flex-wrap: wrap;
 	align-items: center;
 	justify-content: center;
 }
 
-.home-image, .login-image, .spotify-login-image {
+.home-image,
+.login-image,
+.spotify-login-image {
 	margin: 30px;
 }
 
-.home-image img, .login-image img, .spotify-login-image img{
+.home-image img,
+.login-image img,
+.spotify-login-image img {
 	height: 450px;
 }
 
@@ -53,7 +59,9 @@
 	text-align: center;
 }
 
-.signup-btn, .login-btn, .spotify-login-button {
+.signup-btn,
+.login-btn,
+.spotify-login-button {
 	margin: 10px;
 }
 
@@ -86,7 +94,7 @@
 
 .afflatus-title {
 	margin: 0px;
-	font-size: larger
+	font-size: larger;
 }
 
 .nav-bar li {
@@ -121,7 +129,8 @@
 	padding: 30px;
 }
 
-.my-collection, .explore-playlists{
+.my-collection,
+.explore-playlists {
 	text-align: center;
 	align-items: center;
 	padding: 30px;
@@ -134,13 +143,15 @@
 	overflow: hidden;
 }
 
-.my-collection:hover, .explore-playlists:hover{
+.my-collection:hover,
+.explore-playlists:hover {
 	background-color: var(--lightsteelblue);
 	transition: 0.5s;
 	cursor: pointer;
 }
 
-.my-collection img, .explore-playlists img {
+.my-collection img,
+.explore-playlists img {
 	max-height: 400px;
 	max-width: 400px;
 	padding-bottom: 15px;
@@ -152,11 +163,13 @@
 }
 
 /* APP LOGIN AND SIGNUP PAGES */
-.login-page-container, .signup-page-container {
+.login-page-container,
+.signup-page-container {
 	display: flex;
 	justify-content: center;
 }
-.login, .signup {
+.login,
+.signup {
 	display: flex;
 	flex-direction: column;
 	flex-wrap: wrap;
@@ -166,38 +179,107 @@
 	padding: 30px;
 }
 
-.login h2, .signup h2 {
+.login h2,
+.signup h2 {
 	justify-content: center;
 	text-align: center;
 }
 
-.login form, .signup form {
+.login form,
+.signup form {
 	justify-content: center;
 	align-items: center;
 	text-align: center;
 }
 
-.login-form, .signup-form {
+.login-form,
+.signup-form {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 	text-align: center;
 }
 
-.login-label, .signup-label {
+.login-label,
+.signup-label {
 	flex-grow: 1;
 	margin-right: 15px;
 }
 
-
-.login-btn-link, .signup-btn-link {
+.login-btn-link,
+.signup-btn-link {
 	margin: 20px;
 }
+
+/* USER THOUGHTS (EXPLORE PLAYLISTS) SECTION */
+.thought-dashboard {
+	display: flex;
+	flex-direction: column;
+}
+
+.user-thought-title {
+	text-align: center;
+}
+
+.user-thoughts {
+	justify-content: center;
+	text-align: center;
+}
+
+.user-thoughts textarea {
+	width: 80vw;
+}
+
+.thoughts-form-footer {
+	display: flex;
+	flex-direction: row;
+	width: 80vw;
+}
+
+.character-count {
+	display: flex;
+	justify-content: center;
+	flex-grow: 1;
+	align-items: center;
+}
+
+.character-count p {
+	align-self: center;
+}
+
+.share-thoughts {
+	justify-content: flex-end;
+}
+
+.share-thoughts i {
+	padding-left: 10px;
+}
+
+/* THOUGHT CARD/TIMELINE */
+.no-thoughts {
+	display: flex;
+	justify-content: center;
+	margin: 60px;
+	background-color: var(--spacecadet);
+	border-radius: 5px;
+}
+
+.no-thoughts header {
+	justify-content: center;
+	padding: 30px;
+}
+
+.no-thoughts h3 {
+	text-align: center;
+	color: var(--isabelline);
+}
+
 
 /* SPOTIFY LOGIN */
 .spotify-login-button {
 	display: flex;
 	justify-content: center;
+	flex-direction: row;
 }
 
 /* MUSIC PLAYER SECTION */

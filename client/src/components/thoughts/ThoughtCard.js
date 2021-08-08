@@ -3,7 +3,16 @@ import { Link } from "react-router-dom";
 
 const ThoughtList = ({ thoughts, title }) => {
 	if (!thoughts.length) {
-		return <h3>No music thoughts nor playlists have been shared yet. Be the first to share your thoughts!</h3>;
+		return (
+			<div className="no-thoughts">
+				<header>
+					<h3>
+						No music thoughts nor playlists have been shared yet. Be the first
+						to share your thoughts!
+					</h3>
+				</header>
+			</div>
+		);
 	}
 
 	return (

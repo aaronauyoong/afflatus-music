@@ -28,7 +28,7 @@ import Dashboard from "./components/dashboard/Dashboard";
 import SpotifyDashboard from "./components/dashboard/SpotifyDashboard";
 
 const httpLink = createHttpLink({
-	uri: "/graphql",
+	uri: "http://localhost:3001/graphql",
 });
 
 const authLink = setContext((_, { headers }) => {

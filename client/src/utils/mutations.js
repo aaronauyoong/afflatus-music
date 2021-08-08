@@ -34,16 +34,13 @@ export const ADD_USER = gql`
 	}
 `;
 
-// export const ADD_THOUGHT = gql`
-//   mutation addPost($postTitle: String!, $postContent: String!, $createdAt: String!, $user: String!) {
-//     addPost(postTitle: $postTitle, postContent: $postContent, createdAt: $createdAt, user: $user ) {
-//       _id
-//       postTitle
-//       postContent
-//       createdAt
-//       user {
-//         firstName
-//         lastName
-//       }
-//   }
-// `;
+export const ADD_THOUGHT = gql`
+  mutation addThought($thoughtContent: String!, $thoughtAuthor: String!) {
+    addThought(thoughtContent: $thoughtContent, thoughtAuthor: $thoughtAuthor) {
+      _id
+      thoughtContent
+      thoughtAuthor
+      createdAt
+    }
+  }
+`;

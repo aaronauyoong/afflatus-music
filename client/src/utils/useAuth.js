@@ -2,20 +2,13 @@ import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 
+
+// POST https://accounts.spotify.com/api/token
+
 export default function useAuth(code) {
 
 	console.log("This is the code being rendered in useAuth.js ----->", code);
-
-	// console.log("This is the default code --->", code);
-
-	// if (code === undefined || code === null) {
-	// 	let code = localStorage.getItem("code")
-	// }
-
-	// console.log("After using if statement, calling code", code)
 	
-	// const spotifyCode = localStorage.getItem("code");
-	// console.log("This is the Spotify Code from localStorage--->", spotifyCode);
 
 	const [accessToken, setAccessToken] = useState();
 	const [refreshToken, setRefreshToken] = useState();
@@ -26,7 +19,7 @@ export default function useAuth(code) {
 
 	useEffect(() => {
 		axios
-			.post("/login", {
+			.post("/spotifylogin", {
 				code,
 			})
 			.then((res) => {
@@ -36,7 +29,7 @@ export default function useAuth(code) {
 				setRefreshToken(res.data.refreshToken);
 				setExpiresIn(res.data.expiresIn);
 				// below removes extra code section from URL that we dont want (includes clientID, scopes for Spotify etc)
-				window.history.pushState({}, null, "/spotifydashboard");
+				window.history.pushState({}, null, "/");
 			})
 			.catch(() => {
 				// Note: change to history.push("/") once react router is set up with redirect to login
@@ -59,7 +52,7 @@ export default function useAuth(code) {
 					setAccessToken(res.data.accessToken);
 					setExpiresIn(res.data.expiresIn);
 					// below removes extra code section from URL that we dont want (includes clientID, scopes for Spotify etc)
-					window.history.pushState({}, null, "/spotifydashboard");
+					window.history.pushState({}, null, "/");
 				})
 				.catch((err) => {
 					// Note: change to history.push("/") once react router is set up with redirect to login

@@ -8,7 +8,7 @@ export const QUERY_POSTS = gql`
 			postContent
 			createdAt
 			user {
-                username
+				userName
                 firstName
                 lastName
             }
@@ -19,7 +19,7 @@ export const QUERY_POSTS = gql`
 export const QUERY_USER = gql`
 	{
 		user {
-			username
+			userName
 			firstName
 			lastName
 			email 

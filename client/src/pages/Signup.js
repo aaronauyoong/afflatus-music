@@ -14,6 +14,7 @@ function Signup(props) {
 			variables: {
 				email: formState.email,
 				password: formState.password,
+				userName: formState.userName,
 				firstName: formState.firstName,
 				lastName: formState.lastName,
 			},
@@ -39,6 +40,20 @@ function Signup(props) {
 				<div className="signup">
 					<h2>Signup</h2>
 					<form onSubmit={handleFormSubmit}>
+						<div className="signup-form space-between my-2">
+							<div className="signup-label">
+								<label htmlFor="userName">Username</label>
+							</div>
+							<div className="signup-input">
+								<input
+									placeholder="User Name"
+									name="userName"
+									type="userName"
+									id="userName"
+									onChange={handleChange}
+								/>
+							</div>
+						</div>
 						<div className="signup-form space-between my-2">
 							<div className="signup-label">
 								<label htmlFor="firstName">First Name</label>

@@ -11,6 +11,7 @@ const typeDefs = gql`
 
 	type User {
 		_id: ID
+		userName: String
 		firstName: String
 		lastName: String
 		email: String
@@ -30,6 +31,7 @@ const typeDefs = gql`
 
 	type Mutation {
 		addUser(
+			userName: String!
 			firstName: String!
 			lastName: String!
 			email: String!
@@ -42,6 +44,7 @@ const typeDefs = gql`
 			user: String!
 		): Post
 		updateUser(
+			userName: String!
 			firstName: String!
 			lastName: String!
 			email: String!

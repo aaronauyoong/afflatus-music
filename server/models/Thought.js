@@ -2,28 +2,26 @@ const mongoose = require("mongoose");
 
 const { Schema } = mongoose;
 
-const postSchema = new Schema({
-	postTitle: {
+const thoughtSchema = new Schema({
+	thoughtContent: {
 		type: String,
 		required: true,
+		minlength: 1,
+		maxlength: 500,
+		trim: true,
 	},
-	postContent: {
+	thoughtAuthor: {
 		type: String,
 		required: true,
+		trim: true,
 	},
 	createdAt: {
 		type: Date,
 		default: Date.now,
 		get: (timestamp) => dateFormat(timestamp),
-	},
-	user: [
-		{
-			type: Schema.Types.ObjectId,
-			ref: "User",
-		},
-	],
+	}
 });
 
-const Post = mongoose.model("Post", postSchema);
+const Thought = mongoose.model("Thought", thoughtSchema);
 
-module.exports = Post;
+module.exports = Thought;

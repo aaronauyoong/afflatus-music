@@ -9,13 +9,6 @@ const typeDefs = gql`
 		comments: [Comment]!
 	}
 
-	type Comment {
-		_id: ID
-		commentText: String
-		commentAuthor: String
-		createdAt: String
-	}
-
 	type User {
 		_id: ID
 		userName: String
@@ -45,13 +38,7 @@ const typeDefs = gql`
 			password: String!
 		): Auth
 		addThought(thoughtText: String!, thoughtAuthor: String!): Thought
-		addComment(
-			thoughtId: ID!
-			commentText: String!
-			commentAuthor: String!
-		): Thought
 		removeThought(thoughtId: ID!): Thought
-		removeComment(thoughtId: ID!, commentId: ID!): Thought
 		updateUser(
 			userName: String!
 			firstName: String!

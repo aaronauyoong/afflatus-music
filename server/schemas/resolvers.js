@@ -7,14 +7,14 @@ const resolvers = {
 		users: async () => {
 			return User.find().populate("thoughts");
 		},
-		user: async (parent, { username }) => {
+		user: async (_, { username }) => {
 			return User.findOne({ username }).populate("thoughts");
 		},
-		thoughts: async (parent, { username }) => {
+		thoughts: async (_, { username }) => {
 			const params = username ? { username } : {};
 			return Thought.find(params).sort({ createdAt: -1 });
 		},
-		thought: async (parent, { thoughtId }) => {
+		thought: async (_, { thoughtId }) => {
 			return Thought.findOne({ _id: thoughtId });
 		},
 	},
@@ -35,27 +35,8 @@ const resolvers = {
 
 			return thought;
 		},
-		removeThought: async (parent, { thoughtId }) => {
+		removeThought: async (_, { thoughtId }) => {
 			return Thought.findOneAndDelete({ _id: thoughtId });
-		},
-		addComment: async (_, { thoughtId, commentText, commentAuthor }) => {
-			return Thought.findOneAndUpdate(
-				{ _id: thoughtId },
-				{
-					$addToSet: { comments: { commentText, commentAuthor } },
-				},
-				{
-					new: true,
-					runValidators: true,
-				}
-			);
-		},
-		removeComment: async (parent, { thoughtId, commentId }) => {
-			return Thought.findOneAndUpdate(
-				{ _id: thoughtId },
-				{ $pull: { comments: { _id: commentId } } },
-				{ new: true }
-			);
 		},
 		login: async (_, { email, password }) => {
 			const user = await User.findOne({ email });

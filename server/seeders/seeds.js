@@ -1,7 +1,7 @@
 const db = require("../config/connection");
-const { User, Post } = require("../models");
+const { User, Thought } = require("../models");
 const userSeeds = require("./userSeeds.json");
-const postSeeds = require("./postSeeds.json");
+const thoughtSeeds = require("./thoughtSeeds.json");
 
 db.once("open", async () => {
 	try {
@@ -12,9 +12,9 @@ db.once("open", async () => {
 		// 	"//----------------------------Comments seeded----------------------------//"
 		// );
 
-		await Post.deleteMany({});
-		console.log("Old test post data deleted.")
-		await Post.insertMany(postSeeds);
+		await Thought.deleteMany({});
+		console.log("Old test post (thought) data deleted.")
+		await Thought.insertMany(thoughtSeeds);
 
 		console.log(
 			"//----------------------------Posts seeded----------------------------//"

@@ -24,18 +24,21 @@ const resolvers = {
 
 			return { token, user };
 		},
-		// addPost: async (_, { products }, context) => {
-		//   console.log(context);
-		//   if (context.user) {
-		//     const order = new Order({ products });
+		addPost: async (_, { postTitle, postContent, createdAt, user }) => {
+			const post = await Post.create({
+				postTitle,
+				postContent,
+				createdAt,
+				user,
+			});
 
-		//     await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } });
+			// await User.findOneAndUpdate(
+			//   { username: thoughtAuthor },
+			//   { $addToSet: { thoughts: thought._id } }
+			// );
 
-		//     return order;
-		//   }
-
-		//   throw new AuthenticationError('Not logged in');
-		// },
+			return post;
+		},
 		login: async (_, { email, password }) => {
 			const user = await User.findOne({ email });
 

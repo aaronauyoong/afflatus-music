@@ -5,6 +5,7 @@ const typeDefs = gql`
 		_id: ID
 		postTitle: String
 		postContent: String
+		createdAt: String
 		user: [User]
 	}
 
@@ -34,11 +35,17 @@ const typeDefs = gql`
 			email: String!
 			password: String!
 		): Auth
+		addPost(
+			postTitle: String!
+			postContent: String!
+			createdAt: String!
+			user: String!
+		): Post
 		updateUser(
-			firstName: String
-			lastName: String
-			email: String
-			password: String
+			firstName: String!
+			lastName: String!
+			email: String!
+			password: String!
 		): User
 		login(email: String!, password: String!): Auth
 	}

@@ -4,9 +4,9 @@ import SpotifyWebApi from "spotify-web-api-node";
 // Image Imports
 import SoloMusicCartoon from "../../assets/images/undrawMusicImagination.svg";
 
-const spotifyApi = new SpotifyWebApi({
-	clientId: "2ae77a009ef04f15b6de9046ff925ebb",
-});
+// const spotifyApi = new SpotifyWebApi({
+// 	clientId: "2ae77a009ef04f15b6de9046ff925ebb",
+// });
 
 const SpotifyGetPlaylists = () => {
 
@@ -14,7 +14,6 @@ const SpotifyGetPlaylists = () => {
 		<div>
 			<a
 				href="/spotifylogin"
-				// onClick={handleGetPlaylists}
 				style={{ padding: "10px", margin: "10px" }}
 			>
 				<img src={SoloMusicCartoon} alt="Illustration of someone listening to music" />

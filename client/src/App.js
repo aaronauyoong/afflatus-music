@@ -9,20 +9,27 @@ import { setContext } from "@apollo/client/link/context";
 
 // import axios from "axios";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Nav from "./components/nav/Nav";
-import MyPlaylists from "./components/playlist/GetUserPlaylists";
 // import useAuth from "./utils/useAuth";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Signup from "./pages/Signup";
-// import Login from "./components/login/Login";
-// import Profile from "./components/footer/Profile";
+
+
 import { StoreProvider } from "./utils/GlobalState";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+
+// Pages Imports
+import Home from "./pages/Home";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import ExplorePosts from "./pages/ExplorePosts.js"
+
+// Components Imports
+import Nav from "./components/nav/Nav";
+import MyPlaylists from "./components/playlist/GetUserPlaylists";
 import SpotifyLogin from "./components/login/SpotifyLogin";
 import Dashboard from "./components/dashboard/Dashboard";
-import SpotifyDashboard from "./components/dashboard/SpotifyDashboard"
+import SpotifyDashboard from "./components/dashboard/SpotifyDashboard";
+import ViewPost from "./components/post/ViewSinglePost";
+import WritePost from "./components/post/WritePost";
 
 const httpLink = createHttpLink({
 	uri: "/graphql",
@@ -70,9 +77,9 @@ function App() {
 								<Route exact path="/myplaylists" component={MyPlaylists} />
 								<Route exact path="/spotifylogin" component={SpotifyLogin} />
 								<Route exact path="/spotifydashboard" component={SpotifyDashboard} code={getSpotifyCode} />
-								<Route exact path="/exploreplaylists" component={ExplorePlaylists} />
+								<Route exact path="/exploreplaylists" component={ExplorePosts} />
 								<Route exact path="/writepost" component={WritePost} />
-								<Route exact path="/viewpost" component={Viewpost} />
+								<Route exact path="/viewpost:id" component={ViewPost} />
 							</Switch>
 						</main>
 					</StoreProvider>

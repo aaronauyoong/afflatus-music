@@ -31,10 +31,12 @@ const ThoughtForm = () => {
 		event.preventDefault();
 
 		try {
+			console.log(Auth.getProfile().data)
+
 			await addThought({
 				variables: {
 					thoughtContent,
-					thoughtAuthor: Auth.getProfile().data.username,
+					thoughtAuthor: Auth.getProfile().data.userName,
 				},
 			});
 

@@ -23,10 +23,10 @@ export const QUERY_SINGLE_THOUGHT = gql`
 `;
 
 export const QUERY_USER = gql`
-	query user($username: String!) {
-		user(username: $username) {
+	query user($userName: String!) {
+		user(username: $userName) {
 			_id
-			username
+			userName
 			firstName
 			lastName
 			email

@@ -36,7 +36,7 @@ const typeDefs = gql`
 			email: String!
 			password: String!
 		): Auth
-		addThought(thoughtText: String!, thoughtAuthor: String!): Thought
+		addThought(thoughtContent: String!, thoughtAuthor: String!): Thought
 		removeThought(thoughtId: ID!): Thought
 		updateUser(
 			userName: String!

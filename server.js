@@ -6,7 +6,7 @@ const cors = require("cors");
 const { typeDefs, resolvers } = require("./schemas");
 const { authMiddleware } = require("./utils/auth");
 const db = require("./config/connection");
-const spotifyRoutes = require("./routes/spotifyRoutes")
+const spotifyRoutes = require("./routes/spotifyRoutes");
 
 const PORT = process.env.PORT || 3001;
 const app = express();
@@ -21,11 +21,11 @@ server.applyMiddleware({ app });
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cors);
-// using spotifyRoutes to retrieve data from SpotifyAPI 
+// using spotifyRoutes to retrieve data from SpotifyAPI
 app.use(spotifyRoutes);
 
-if (process.env.NODE_ENV === 'production') {
-app.use(express.static(path.join(__dirname, "../client/build")));
+if (process.env.NODE_ENV === "production") {
+	app.use(express.static(path.join(__dirname, "client", "build")));
 }
 
 app.get("*", (req, res) => {

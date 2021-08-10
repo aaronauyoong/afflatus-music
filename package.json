@@ -1,20 +1,38 @@
 {
-  "name": "afflatus-music-project-3",
+  "name": "server",
   "version": "1.0.0",
-  "description": "This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).",
-  "main": "",
+  "description": "",
+  "main": "server.js",
   "scripts": {
-    "start": "cd server && npm run start:dev",
-    "heroku-postbuild": "cd client && npm install && npm run build"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/aaronauyoong/project-3.git"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "develop": "node server.js && cd client && npm run start:dev",
+    "start:dev": "concurrently \"nodemon\" \"npm run client\"",
+    "client": "cd client && npm run start",
+    "seed": "node seeders/seeds.js",
+    "prod:install": "cd client && npm install && npm run build && cd ..",
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "author": "",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/aaronauyoong/project-3/issues"
+  "dependencies": {
+    "apollo-server": "^3.0.2",
+    "apollo-server-express": "^2.25.2",
+    "bcrypt": "^5.0.1",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "graphql": "^15.5.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.13.5",
+    "path": "^0.12.7",
+    "spotify-web-api-node": "^5.0.2"
   },
-  "homepage": "https://github.com/aaronauyoong/project-3#readme"
+  "devDependencies": {
+    "concurrently": "^6.2.0",
+    "nodemon": "^2.0.12"
+  }, 
+  "engines": {
+    "node": "15.14.0"
+  }
 }

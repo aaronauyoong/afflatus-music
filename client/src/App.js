@@ -39,7 +39,6 @@ const client = new ApolloClient({
 });
 
 const code = new URLSearchParams(window.location.search).get("code");
-console.log("This is the code retrieved from URLSearchParams ----->", code);
 localStorage.setItem("code", code);
 
 function App() {

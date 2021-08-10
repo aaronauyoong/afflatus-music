@@ -9,7 +9,6 @@ import ThoughtCard from "../components/thoughts/ThoughtCard";
 export default function ExploreTimeline() {
 	const { loading, data } = useQuery(QUERY_THOUGHTS);
 	const thoughts = data?.thoughts || [];
-	console.log(thoughts);
 	return (
 		<main>
 			<div className="thoughts-dashboard">

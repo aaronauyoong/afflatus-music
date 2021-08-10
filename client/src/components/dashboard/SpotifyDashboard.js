@@ -98,8 +98,6 @@ export default function SpotifyDashboard() {
 	function getMyData() {
 		(async () => {
 			const me = await spotifyApi.getMe();
-			console.log(me.body);
-			console.log(me.body.display_name);
 			getUserPlaylists(me.body.id);
 		})().catch((err) => {
 			console.error(err);

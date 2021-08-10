@@ -22,9 +22,9 @@ function useAuth(code) {
 				new URLSearchParams({
 					grant_type: "authorization_code",
 					code: code,
-					redirect_uri: "http://localhost:3000/spotifydashboard",
-					client_id: "2ae77a009ef04f15b6de9046ff925ebb",
-					client_secret: "",
+					redirect_uri: "/spotifydashboard",
+					client_id: process.env.CLIENT_ID,
+					client_secret: process.env.CLIENT_SECRET,
 				}),
 				{
 					headers: {

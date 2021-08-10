@@ -1,8 +1,6 @@
 import { useReducer } from 'react';
-// Import our actions from our actions file
 import { LOGGED_IN } from "./actions";
 
-// Reducer accepts state and an action, returns a new state
 export default function reducer(state, action) {
 	switch (action.type) {
 		case LOGGED_IN:

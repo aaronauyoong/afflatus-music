@@ -23,7 +23,7 @@ function useAuth(code) {
 					grant_type: "authorization_code",
 					code: code,
 					redirect_uri: "http://localhost:3000/spotifydashboard",
-					client_id: "",
+					client_id: "2ae77a009ef04f15b6de9046ff925ebb",
 					client_secret: "",
 				}),
 				{

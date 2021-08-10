@@ -1,5 +1,6 @@
 import { React } from "react";
 import "../../assets/styles/customStyles.css";
+import { Container } from "react-bootstrap"
 import SpotifyDashboard from "./SpotifyDashboard";
 import ExplorePlaylists from "../playlist/ExplorePlaylists";
 
@@ -15,12 +16,12 @@ export default function Dashboard() {
 					className="dashboard-menu d-flex flex-row align-items-center py-2"
 					style={{ flexGrow: 1 }}
 				>
-					<div className="spotify-dashboard my-playlists">
+					<Container className="card spotify-dashboard my-playlists">
 						<SpotifyDashboard />
-					</div>
-                    <div className="my-playlists">
+					</Container>
+                    <Container className="card my-playlists">
 						<ExplorePlaylists/>
-					</div>
+					</Container>
 				</div>
 			</main>
 		</div>

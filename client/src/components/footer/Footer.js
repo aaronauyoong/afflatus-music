@@ -7,6 +7,7 @@ export default function Footer() {
             <div>
                 <div className="credits">
                     <p>Aaron Au Yoong Copyright (c) 2021-Present. All rights reserved. </p>
+                    <p> <i className="fas fa-music"></i> Music Powered by Spotify.</p>
                 </div>
                 <div className="icon-links">
                     <a href="https://www.github.com/aaronauyoong"><i className="fab fa-github"></i></a>

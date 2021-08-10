@@ -1,6 +1,6 @@
 import React from "react";
 
-const ThoughtList = ({ thoughts, title }) => {
+const ThoughtList = ({ thoughts }) => {
 	if (!thoughts.length) {
 		return (
 			<div className="no-thoughts">

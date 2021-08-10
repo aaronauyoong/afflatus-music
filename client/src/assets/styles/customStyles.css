@@ -18,6 +18,7 @@
 }
 
 body {
+	height: 100%;
 	font-family: "Montserrat", sans-serif;
 }
 
@@ -55,7 +56,6 @@ body {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: center;
-	/* min-height: 100vh; */
 	text-align: center;
 }
 
@@ -68,6 +68,7 @@ body {
 /* NAVBAR SECTION */
 .nav-bar {
 	display: flex;
+	flex-wrap: wrap;
 	padding: 20px;
 	margin-bottom: 20px;
 	background-color: #333;
@@ -79,6 +80,7 @@ body {
 }
 
 .nav-bar a {
+	text-align: center;
 	text-decoration: none;
 	color: #fff;
 	padding: 10px;
@@ -123,6 +125,7 @@ body {
 
 .dashboard-menu {
 	display: flex;
+	flex-wrap: wrap;
 	align-items: center;
 	justify-content: center;
 	flex-direction: row;
@@ -142,6 +145,8 @@ body {
 	background-color: var(--gentlegrey);
 	flex: 1;
 	overflow: hidden;
+	min-width: 300px;
+	min-height: 300px;
 }
 
 .my-collection:hover,
@@ -153,6 +158,8 @@ body {
 
 .my-collection img,
 .explore-playlists img {
+	min-width: 300px;
+	min-height: 300px;
 	max-height: 400px;
 	max-width: 400px;
 	padding-bottom: 15px;
@@ -338,17 +345,40 @@ body {
 	border-radius: 5px;
 }
 
-.get-my-playlists:hover{
+.get-my-playlists:hover {
 	transition: 0.5s;
 	background-color: var(--silverpink);
-	
 }
 
+.display-user-playlists {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: wrap;
+	justify-content: center;
+	overflow: hidden;
+	text-align: center;
+	text-overflow: ellipsis;
+}
+
+.render-user-playlists {
+	display: flex;
+}
+/* .user-playlists {
+	display: flex;
+	justify-content: center;
+	border: 5px solid var(--silverpink);
+	border-radius: 5px;
+	margin: 10px;
+} */
 
 /* MUSIC PLAYER SECTION */
+
 .music-player {
 	position: sticky;
 	bottom: 0px;
+	/* position: absolute; */
+	/* bottom: 10px; */
+	width: 100%;
 }
 
 /* FOOTER SECTION */
@@ -362,14 +392,15 @@ body {
 
 .credits {
 	font-size: smaller;
+	text-align: center;
 }
 
 .icon-links {
 	display: flex;
 	justify-content: space-evenly;
-	color: var(--spacecadet)
+	color: var(--spacecadet);
 }
 
 .icon-links a {
-	color: var(--spacecadet)
+	color: var(--spacecadet);
 }

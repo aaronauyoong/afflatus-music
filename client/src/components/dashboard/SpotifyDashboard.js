@@ -24,7 +24,7 @@ function useAuth(code) {
 					code: code,
 					redirect_uri: "http://localhost:3000/spotifydashboard",
 					client_id: "2ae77a009ef04f15b6de9046ff925ebb",
-					client_secret: "",
+					client_secret: "b2ae693ca18f4ad696d600ca55edb740",
 				}),
 				{
 					headers: {

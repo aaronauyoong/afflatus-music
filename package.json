@@ -10,7 +10,6 @@
     "start:dev": "concurrently \"nodemon\" \"npm run client\"",
     "client": "cd client && npm run start",
     "seed": "node seeders/seeds.js",
-    "prod:install": "cd client && npm install && npm run build && cd ..",
     "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "author": "",

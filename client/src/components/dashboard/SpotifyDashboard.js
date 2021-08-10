@@ -1,24 +1,59 @@
 import { React, useState, useEffect } from "react";
-import useAuth from "../../utils/useAuth";
 import { Container, Form } from "react-bootstrap";
 import SpotifyWebApi from "spotify-web-api-node";
 import TrackSearchResult from "../searchResults/TrackSearchResult";
 import Player from "../musicPlayer/Player";
-// import GetMyPlaylists from "../../getMyData";
 import "../../assets/styles/customStyles.css";
+import axios from "axios";
 
 const spotifyApi = new SpotifyWebApi({
 	clientId: "2ae77a009ef04f15b6de9046ff925ebb",
 });
 
-export default function SpotifyDashboard({ code }) {
-	const authToken = window.localStorage.getItem("code");
-	const accessToken = useAuth(authToken);
-	console.log("This is the accessToken ----->", accessToken);
+function useAuth(code) {
+	const [access_token, setAccessToken] = useState();
+	const [refresh_token, setRefreshToken] = useState();
+	const [expires_in, setExpiresIn] = useState();
+
+	useEffect(() => {
+		axios
+			.post(
+				"https://accounts.spotify.com/api/token",
+				new URLSearchParams({
+					grant_type: "authorization_code",
+					code: code,
+					redirect_uri: "http://localhost:3000/spotifydashboard",
+					client_id: "",
+					client_secret: "",
+				}),
+				{
+					headers: {
+						"Content-Type": "application/x-www-form-urlencoded",
+					},
+				}
+			)
+			.then((res) => {
+				setAccessToken(res.data.access_token);
+				setRefreshToken(res.data.refresh_token);
+				setExpiresIn(res.data.expires_in);
+				window.history.pushState({}, null, "/");
+			})
+			.catch(() => {
+				window.location = "/spotifylogin";
+			});
+	}, [code]);
+
+	return access_token;
+}
+
+export default function SpotifyDashboard() {
+	const code = localStorage.getItem("code");
+	const accessToken = useAuth(code);
 
 	const [search, setSearch] = useState("");
 	const [searchResults, setSearchResults] = useState([]);
 	const [playingTrack, setPlayingTrack] = useState();
+	const [playlists, setUserPlaylists] = useState([]);
 
 	function chooseTrack(track) {
 		setPlayingTrack(track);
@@ -27,7 +62,6 @@ export default function SpotifyDashboard({ code }) {
 
 	useEffect(() => {
 		if (!accessToken) return;
-		console.log("setting access token", accessToken);
 		spotifyApi.setAccessToken(accessToken);
 	}, [accessToken]);
 
@@ -35,7 +69,6 @@ export default function SpotifyDashboard({ code }) {
 		if (!search) return setSearchResults([]);
 		if (!accessToken) return;
 
-		// Cancelling request for each change/update of access token.
 		let cancel = false;
 		spotifyApi.searchTracks(search).then((res) => {
 			if (cancel) return;
@@ -48,6 +81,7 @@ export default function SpotifyDashboard({ code }) {
 						},
 						track.album.images[0]
 					);
+
 					return {
 						artist: track.artists[0].name,
 						title: track.name,
@@ -57,6 +91,7 @@ export default function SpotifyDashboard({ code }) {
 				})
 			);
 		});
+
 		return () => (cancel = true);
 	}, [search, accessToken]);
 
@@ -71,46 +106,10 @@ export default function SpotifyDashboard({ code }) {
 		});
 	}
 
-	// get my playlists
 	async function getUserPlaylists(userName) {
-		// console.log("dashboard: ", accessToken);
 		const data = await spotifyApi.getUserPlaylists(userName);
-
-		console.log("----------+++++++++");
-		// let playlists = [];
-
-		for (let playlist of data.body.items) {
-			console.log(playlist.name + " " + playlist.id);
-
-			// let tracks = await getPlaylistTracks(playlist.id, playlist.name);
-			// console.log(tracks)
-		}
+		setUserPlaylists(data.body.items);
 	}
-
-	// get playlist tracks
-	// async function getPlaylistTracks(playlistId, playlistName) {
-	//     const data = await spotifyApi.getPlaylistTracks(playlistId, {
-	//         offset: 1,
-	//         limit: 10,
-	//         fields: 'items'
-
-	//     })
-
-	//     // console.log("The playlist contains these tracks %j", data.body);
-	//     // console.log("The playlist contains these tracks: ", data.body.items[0].track)
-	//     console.log(playlistName + " contains these tracks:");
-
-	//     let tracks = [];
-
-	//     for (let track_obj of data.body.items) {
-	//         const track = track_obj.track
-	//         tracks.push(track);
-	//         console.log(track.name + " : " + track.artists[0].name)
-	//       }
-
-	//     console.log("----------+++++++++++")
-	//     return tracks
-	// }
 
 	function getDisplayName() {
 		(async () => {
@@ -156,16 +155,24 @@ export default function SpotifyDashboard({ code }) {
 					</button>
 				</div>
 				<div className="display-user-playlists">
-					<div className="user-playlists"></div>
+					<div className="render-user-playlist">
+						{playlists
+							? playlists.map((playlist) => (
+									<div className="user-playlists">
+										<p>{playlist.name}</p>
+									</div>
+							  ))
+							: ""}
+					</div>
+				</div>
+				<div className="load-music-player">
+					<Player
+						accessToken={accessToken}
+						code={code}
+						trackUri={playingTrack?.uri}
+					/>
 				</div>
 			</main>
-			<div className="music-player">
-				<Player
-					accessToken={accessToken}
-					code={code}
-					trackUri={playingTrack?.uri}
-				/>
-			</div>
 		</div>
 	);
 }

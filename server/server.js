@@ -24,9 +24,11 @@ app.use(cors);
 // using spotifyRoutes to retrieve data from SpotifyAPI 
 app.use(spotifyRoutes);
 
+if (process.env.NODE_ENV === 'production') {
 app.use(express.static(path.join(__dirname, "../client/build")));
+}
 
-app.get("*", (_, res) => {
+app.get("*", (req, res) => {
 	res.sendFile(path.join(__dirname, "../client/build/index.html"));
 });
 

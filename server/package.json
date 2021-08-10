@@ -8,7 +8,8 @@
     "start": "node server.js",
     "start:dev": "concurrently \"nodemon\" \"npm run client\"",
     "client": "cd ../client && npm run start",
-    "seed": "node seeders/seeds.js"
+    "seed": "node seeders/seeds.js",
+    "install": "cd client && npm install && npm run build && cd .."
   },
   "author": "",
   "license": "ISC",

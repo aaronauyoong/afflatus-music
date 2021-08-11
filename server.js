@@ -29,9 +29,9 @@ if (process.env.NODE_ENV === "production") {
 	app.use(express.static(path.join(__dirname, "client", "build")));
 }
 
-app.get("/*", (_, res) => {
-	res.sendFile(path.join(__dirname, "client", "build" , "index.html"));
-});
+// app.get("/*", (_, res) => {
+// 	res.sendFile(path.join(__dirname, "client", "build" , "index.html"));
+// });
 
 db.on("connected", (err) => {
 	if (err) throw err; 

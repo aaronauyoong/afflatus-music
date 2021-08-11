@@ -379,8 +379,6 @@ body {
 .music-player {
 	position: sticky;
 	bottom: 0px;
-	/* position: absolute; */
-	/* bottom: 10px; */
 	width: 100%;
 }
 

@@ -24,13 +24,12 @@ if (process.env.NODE_ENV === "production") {
 }
 
 app.get("*", (_, res) => {
-	res.sendFile(path.join(__dirname, "client", "build" , "index.html"));
+	res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
 
 db.on("connected", (err) => {
-	if (err) throw err; 
-
-	console.log('connected to mongodb successfully');
+	if (err) throw err;
+	console.log("Connected to mongodb successfully.");
 
 	app.listen(PORT, () => {
 		console.log(`API server running on port ${PORT}!`);

@@ -308,6 +308,7 @@ body {
 	margin-bottom: 20px;
 	background-color: var(--spacecadet);
 	color: var(--white);
+	width: 80vw;
 }
 
 .thought-header {
@@ -363,13 +364,15 @@ body {
 .render-user-playlists {
 	display: flex;
 }
-/* .user-playlists {
+
+.user-playlists {
 	display: flex;
 	justify-content: center;
-	border: 5px solid var(--silverpink);
-	border-radius: 5px;
-	margin: 10px;
-} */
+}
+
+.user-playlists p {
+	font-weight: bold;
+}
 
 /* MUSIC PLAYER SECTION */
 

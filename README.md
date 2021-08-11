@@ -4,11 +4,11 @@ Project Owner: Aaron Au Yoong
 
 <br>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), and deployed using Heroku and MongoAtlas. 
 
 <br>
 
-Deployment Link: 
+Deployment Link: [Afflatus Music](https://afflatus-music.herokuapp.com/).
 
 ## Table of Contents
 * [Idea](#Idea)
@@ -17,6 +17,7 @@ Deployment Link:
 * [License](#License)
 * [Packages](#Packages)
 * [Contributions](#Contributions)
+* [Credits](#Credits)
 * [Questions](#Questions)
 
 
@@ -43,6 +44,8 @@ Copyright © 2021-Present Aaron Au Yoong. All rights reserved.
 <br>
 
 ## Packages
+Below is a list of NPM packages used to create this application. 
+
 Front-end: 
 * Spotify-Web-API-Node
 * React-Spotify-Web-Playback
@@ -60,7 +63,6 @@ Back-end:
 * Mongoose
 * Dotenv
 * GraphQL
-* Cors
 * Path
 * Spotify-Web-Api-Node
 
@@ -71,6 +73,9 @@ Development:
 ## Contributions
 If you would like to become a contributor to this project, please contact me via my GitHub profile: [Aaron Au Yoong's GitHub Profile](https://github.com/aaronauyoong)
 <br>
+
+## Credits
+Music powered by Spotify ©
 
 ## Questions
 Any questions? Feel free to contact me via my GitHub profile: [Aaron Au Yoong's GitHub Profile](https://github.com/aaronauyoong)

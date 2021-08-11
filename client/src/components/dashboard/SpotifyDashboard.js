@@ -21,10 +21,10 @@ function useAuth(code) {
 				"https://accounts.spotify.com/api/token",
 				new URLSearchParams({
 					grant_type: "authorization_code",
-					code: code,
-					redirect_uri: process.env.REDIRECT_URI,
-					client_id: process.env.CLIENT_ID,
-					client_secret: process.env.CLIENT_SECRET,
+					code,
+					redirect_uri: process.env.REACT_APP_SPOTIFY_REDIRECT_URI,
+					client_id: process.env.REACT_APP_SPOTIFY_CLIENT_ID,
+					client_secret: process.env.REACT_APP_SPOTIFY_CLIENT_SECRET,
 				}),
 				{
 					headers: {
@@ -33,6 +33,7 @@ function useAuth(code) {
 				}
 			)
 			.then((res) => {
+				console.log(res);
 				setAccessToken(res.data.access_token);
 				setRefreshToken(res.data.refresh_token);
 				setExpiresIn(res.data.expires_in);

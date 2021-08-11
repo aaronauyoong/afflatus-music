@@ -33,7 +33,11 @@ app.get("/*", (_, res) => {
 	res.sendFile(path.join(__dirname, "client", "build" , "index.html"));
 });
 
-db.once("open", () => {
+db.on("connected", (err) => {
+	if (err) throw err; 
+
+	console.log('connected to mongodb successfully');
+
 	app.listen(PORT, () => {
 		console.log(`API server running on port ${PORT}!`);
 		console.log(`Use GraphQL at http://localhost:${PORT}${server.graphqlPath}`);

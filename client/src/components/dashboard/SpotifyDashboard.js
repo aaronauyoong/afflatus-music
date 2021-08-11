@@ -7,7 +7,7 @@ import "../../assets/styles/customStyles.css";
 import axios from "axios";
 
 const spotifyApi = new SpotifyWebApi({
-	clientId: "2ae77a009ef04f15b6de9046ff925ebb",
+	clientId: process.env.REACT_APP_SPOTIFY_CLIENT_ID,
 });
 
 function useAuth(code) {
@@ -33,7 +33,6 @@ function useAuth(code) {
 				}
 			)
 			.then((res) => {
-				console.log(res);
 				setAccessToken(res.data.access_token);
 				setRefreshToken(res.data.refresh_token);
 				setExpiresIn(res.data.expires_in);
